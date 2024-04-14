@@ -1,0 +1,3488 @@
+
+<!DOCTYPE html>
+<html lang="en" class="scrollbar dark">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Anbuinfosec Apis | anbuinfosec</title>
+    <base href="/">
+    <meta property="og:title" content="anbuinfosec apis | anbuinfosec">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="public/images/logo512.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Anbuinfosec Apis is a website that provides APIs for developers.">
+    <link rel="icon" href="public/images/logo512.png" type="image/x-icon">
+    <link rel="stylesheet" id="prims-css" href="public/css/prism.css">
+    <link rel="stylesheet" href="public/css/phoenix.css">
+    <link rel="stylesheet" href="public/css/custom.css">
+    <link rel="stylesheet" href="public/css/footer.css">
+    <link rel="stylesheet" href="ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <script src="public/js/prism.js"></script>
+    <script src="public/js/9e0725c1aa.js"></script>
+    <script src="public/js/jquery-3.6.3.min.js"></script>
+    <script src="public/js/modal.js"></script>
+    <script src="public/js/toast.js"></script>
+    <script src="public/js/clipboard.js"></script>
+    <script src="/public/js/ajaxposts.js"></script>
+    <script src="npm/sweetalert2-11.js"></script>
+    <script src="npm/bootstrap-5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="ajax/libs/list_js/2.3.1/list.min.js"></script>
+</head>
+
+<body>
+    <div class="loader">
+        <div class="loader__figure">
+            <img src="public/images/loader.svg" alt="loader" style="max-width: 200px;">
+        </div>
+    </div>
+<main class="main" id="top">
+  <div class="container-fluid px-0" data-layout="container">
+
+<nav class="navbar navbar-top navbar-expand-md" id="navbarTop">
+    <div class="navbar-logo">
+        <button class="btn navbar-toggler navbar-toggler-humburger-icon hover-bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTopCollapse" aria-controls="navbarTopCollapse" aria-expanded="false" aria-label="Toggle Navigation">
+            <span class="navbar-toggle-icon"><span class="toggle-line"></span></span>
+        </button>
+        <a class="navbar-brand mr-1 mr-sm-3" href="index">
+            <div class="d-flex align-items-center">
+                <img src="public/images/logo.png" class="d-inline-block align-top rounded" alt="logo" style="max-height: 40px !important;">
+                <span class="h4 mb-0 text-uppercase d-none d-sm-block ms-2" style="font-family: gang-of-three;">ANBUINFOSEC</span>
+            </div>
+        </a>
+    </div>
+    <div class="collapse navbar-collapse navbar-top-collapse order-1 order-md-0 justify-content-end" id="navbarTopCollapse">
+        <ul class="navbar-nav" data-top-nav-dropdowns="data-top-nav-dropdowns">
+            <li class="nav-item">
+                <a href="docs" class="nav-link px-3"><i class="fas fa-book"></i> Docs</a>
+            </li>
+            <li class="nav-item">
+                <a href="tools" class="nav-link px-3"><i class="fas fa-tools"></i> Tools</a>
+            </li>       
+            <li class="nav-item">
+                <a href="price" class="nav-link px-3"><i class="fas fa-money-bill-wave"></i> Price</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a href="contacts" class="nav-link px-3"><i class="fas fa-phone-alt"></i> Contacts</a>
+            </li>
+            <li class="nav-item">
+                <a href="about" class="nav-link px-3"><i class="fas fa-info-circle"></i> About</a>
+            </li>
+                            <li class="nav-item dropdown">
+                    <a href="signin" class="nav-link px-3"><i class="fas fa-sign-in-alt"></i> Login</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="signup" class="nav-link px-3"><i class="fas fa-user-plus"></i> Register</a>
+                </li>
+
+            <li class="nav-item" id="switch-theme">
+                <a class="nav-link px-3" id="switch-mode" role="button">
+                    <i class="fas fa-moon" id="switch-mode-icon"></i>
+                    <span class="d-md-none">Switch to <span id="switch-mode-text">dark</span> Mode</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <ul class="navbar-nav navbar-nav-icons flex-row">
+            </ul>
+</nav>		<script src="public/js/header.js"></script>
+
+    <style>
+      * {
+        font-style: normal !important;
+      }
+    </style>
+
+    <div class="content">
+      <div id="toast"></div>
+      <script>
+        function toggleCollapse(el) {
+          const currentI = $(el).find('i');
+          // check if the element is collapsed
+          if (currentI.css('transform') === 'none') {
+            currentI.css('transform', 'rotate(180deg)');
+            currentI.css('transition', 'transform 0.3s ease-in-out');
+            return;
+          } else {
+            currentI.css('transform', 'none');
+            currentI.css('transition', 'transform 0.3s ease-in-out');
+            return;
+          }
+        }
+
+        function tryItOut(e) {
+          console.log(e);
+        }
+      </script>
+      <style>
+        .collapsing {
+          overflow: hidden !important;
+        }
+      </style>
+      <h2 class="mb-3">Note</h2>
+      <p class="text-700 lead mb-2">You can pass the <span class="text-warning">apikey</span> in one of the following three ways:</p>
+      <ul class="list-unstyled">
+        <li class="mb-2">
+          <span class="text-700">1. In the <span class="text-success">GET</span> method: you can pass parameters in the <span class="text-warning">query string</span> of the URL with param <span class="text-warning">"apikey"</span>.</span>
+        </li>
+      </ul>
+      <hr>
+      <button class="btn btn-primary btn-icon btn-icon-only btn-lg btn-circle position-fixed bottom-0 end-0 mb-3 ms-3" data-bs-toggle="modal" data-bs-target="#searchModal" style="z-index: 9999;">
+        <i class="fas fa-search"></i>
+      </button>
+
+      <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header border-0">
+              <h5 class="modal-title" id="searchModalLabel">List of APIs</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body"><div class="accordion accordion-flush" id="accordionSearch"><div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#ai-collapse" aria-expanded="false" aria-controls="ai-collapse">ai <span class="badge bg-primary rounded-pill ms-2">1</span></button></h2><div id="ai-collapse" class="accordion-collapse collapse" aria-labelledby="ai" data-bs-parent="#accordionSearch"><div class="accordion-body"><ul class="list-unstyled"><li class="mb-2"><button class="btn btn-link text-decoration-none text-dark" onclick="scrollToElement('api/ai/gpt')">api/ai/gpt</button></li></ul></div></div></div><div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#anime-collapse" aria-expanded="false" aria-controls="anime-collapse">anime <span class="badge bg-primary rounded-pill ms-2">4</span></button></h2><div id="anime-collapse" class="accordion-collapse collapse" aria-labelledby="anime" data-bs-parent="#accordionSearch"><div class="accordion-body"><ul class="list-unstyled"><li class="mb-2"><button class="btn btn-link text-decoration-none text-dark" onclick="scrollToElement('api/anime/anilist')">api/anime/anilist</button></li><li class="mb-2"><button class="btn btn-link text-decoration-none text-dark" onclick="scrollToElement('api/anime/neko')">api/anime/neko</button></li><li class="mb-2"><button class="btn btn-link text-decoration-none text-dark" onclick="scrollToElement('api/anime/pairdp')">api/anime/pairdp</button></li><li class="mb-2"><button class="btn btn-link text-decoration-none text-dark" onclick="scrollToElement('api/anime/trace')">api/anime/trace</button></li></ul></div></div></div><div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#downloader-collapse" aria-expanded="false" aria-controls="downloader-collapse">downloader <span class="badge bg-primary rounded-pill ms-2">5</span></button></h2><div id="downloader-collapse" class="accordion-collapse collapse" aria-labelledby="downloader" data-bs-parent="#accordionSearch"><div class="accordion-body"><ul class="list-unstyled"><li class="mb-2"><button class="btn btn-link text-decoration-none text-dark" onclick="scrollToElement('api/downloader/facebook')">api/downloader/facebook</button></li><li class="mb-2"><button class="btn btn-link text-decoration-none text-dark" onclick="scrollToElement('api/downloader/instagram')">api/downloader/instagram</button></li><li class="mb-2"><button class="btn btn-link text-decoration-none text-dark" onclick="scrollToElement('api/downloader/terabox')">api/downloader/terabox</button></li><li class="mb-2"><button class="btn btn-link text-decoration-none text-dark" onclick="scrollToElement('api/downloader/twitter')">api/downloader/twitter</button></li><li class="mb-2"><button class="btn btn-link text-decoration-none text-dark" onclick="scrollToElement('api/downloader/youtube')">api/downloader/youtube</button></li></ul></div></div></div><div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#image-collapse" aria-expanded="false" aria-controls="image-collapse">image <span class="badge bg-primary rounded-pill ms-2">1</span></button></h2><div id="image-collapse" class="accordion-collapse collapse" aria-labelledby="image" data-bs-parent="#accordionSearch"><div class="accordion-body"><ul class="list-unstyled"><li class="mb-2"><button class="btn btn-link text-decoration-none text-dark" onclick="scrollToElement('api/image/screenshot')">api/image/screenshot</button></li></ul></div></div></div><div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sports-collapse" aria-expanded="false" aria-controls="sports-collapse">sports <span class="badge bg-primary rounded-pill ms-2">2</span></button></h2><div id="sports-collapse" class="accordion-collapse collapse" aria-labelledby="sports" data-bs-parent="#accordionSearch"><div class="accordion-body"><ul class="list-unstyled"><li class="mb-2"><button class="btn btn-link text-decoration-none text-dark" onclick="scrollToElement('api/sports/match')">api/sports/match</button></li><li class="mb-2"><button class="btn btn-link text-decoration-none text-dark" onclick="scrollToElement('api/sports/score')">api/sports/score</button></li></ul></div></div></div><div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#tools-collapse" aria-expanded="false" aria-controls="tools-collapse">tools <span class="badge bg-primary rounded-pill ms-2">4</span></button></h2><div id="tools-collapse" class="accordion-collapse collapse" aria-labelledby="tools" data-bs-parent="#accordionSearch"><div class="accordion-body"><ul class="list-unstyled"><li class="mb-2"><button class="btn btn-link text-decoration-none text-dark" onclick="scrollToElement('api/tools/bin')">api/tools/bin</button></li><li class="mb-2"><button class="btn btn-link text-decoration-none text-dark" onclick="scrollToElement('api/tools/device')">api/tools/device</button></li><li class="mb-2"><button class="btn btn-link text-decoration-none text-dark" onclick="scrollToElement('api/tools/imei')">api/tools/imei</button></li><li class="mb-2"><button class="btn btn-link text-decoration-none text-dark" onclick="scrollToElement('api/tools/sms')">api/tools/sms</button></li></ul></div></div></div><div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#v1-collapse" aria-expanded="false" aria-controls="v1-collapse">v1 <span class="badge bg-primary rounded-pill ms-2">2</span></button></h2><div id="v1-collapse" class="accordion-collapse collapse" aria-labelledby="v1" data-bs-parent="#accordionSearch"><div class="accordion-body"><ul class="list-unstyled"><li class="mb-2"><button class="btn btn-link text-decoration-none text-dark" onclick="scrollToElement('api/v1/simitalk')">api/v1/simitalk</button></li><li class="mb-2"><button class="btn btn-link text-decoration-none text-dark" onclick="scrollToElement('api/v1/simiteach')">api/v1/simiteach</button></li></ul></div></div></div></div></div>
+
+            <div class="modal-footer border-0">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row g-3 justify-content-start mt-1 align-items-stretch"><h2 class="mb-4 text-900" id="ai" data-anchor="data-anchor">ai <a href="#ai" class="anchorjs-link" aria-label="Anchor" data-anchorjs-icon="#"></a></h2><div class="col-12 col-md-6 col-xl-4 mb-3">
+  <div class="card shadow-none border border-300 px-1 mx-0">
+    <div class="card-header py-3 position-relative d-flex flex-column justify-content-between">
+      <div class="row g-3" style="flex-direction: column">
+        <div class="col-12 col-md">
+          <h5 class="text-900 mb-0" id="api/ai/gpt">
+            <span class="token selector">GET</span> api/ai/gpt&nbsp;&nbsp;
+            <span class="h6 text-900">(<span class="text-warning">-1</span> request)</span>
+          </h5>
+          <p class="text-700 mb-0 mt-2">Chat gpt without login and auth.</p>
+          <div class="language-url py-1 mt-1 mb-0 scrollbar user-select-all">
+            <code class="language-url">https://anbusec.xyz/api/ai/gpt?apikey=YOUR_API_KEY_HERE&type=API_TYPE&prompt=Bangladesh</code>
+          </div>
+        </div>
+        <div class="col mt-0">
+          <nav class="nav nav-underline justify-content-end doc-tab-nav align-items-center">
+            <button class="btn btn-link px-2 text-900 copy-code-btn" type="button" data-clipboard-text="https://anbusec.xyz/api/ai/gpt?apikey=YOUR_API_KEY_HERE&type=API_TYPE&prompt=Bangladesh" data-clipboard-toast="true">
+              <span class="fas fa-copy me-1" aria-hidden="true"></span>Copy Url
+            </button>
+            <a class="btn btn-sm btn-phoenix-primary ms-2 collapsed" data-bs-toggle="collapse" href="#gpt" role="button" aria-expanded="true" aria-controls="gpt">
+              <span class="fas fa-code me-1" aria-hidden="true"></span>Example
+            </a>
+          </nav>
+        </div>
+      </div>
+
+      <div class="row g-3">
+        <div class="card-body p-0">
+          <div class="code-collapse collapse" id="gpt">
+            <ul class="nav nav-underline" role="tablist">
+              <li class="nav-item" role="presentation">
+                <a class="nav-link active" data-bs-toggle="tab" href="#node.jsgpt" role="tab" aria-selected="false" tabindex="-1">Node.js</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#pythongpt" role="tab" aria-selected="false" tabindex="-1">Python</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#phpgpt" role="tab" aria-selected="false" tabindex="-1">PHP</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#curlgpt" role="tab" aria-selected="false" tabindex="-1">cURL</a>
+              </li>
+            </ul>
+
+            <div class="tab-content mt-3">
+              <div class="tab-pane fade active show" id="node.jsgpt" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-javascript" tabindex="0"><code class="language-javascript">const axios = require('axios');
+(async () => {
+  try {
+    const response = await axios({
+      url: 'https://anbusec.xyz/api/ai/gpt',
+      method: 'GET',
+      params: {
+        'apikey': 'YOUR_API_KEY_HERE',
+        'type': 'API_TYPE',
+        'prompt': 'Bangladesh',
+      }
+    });
+    console.log(response.data);
+  }
+  catch (error) {
+    console.log(error);
+  }
+})();
+</code></pre>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="pythongpt" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-python" tabindex="0"><code class="language-python">import requests
+
+url = 'https://anbusec.xyz/api/ai/gpt'
+querystring = {
+    'apikey': 'YOUR_API_KEY_HERE',
+    'type': 'API_TYPE',
+    'prompt': 'Bangladesh',
+}
+response = requests.request('GET', url, headers=headers, params=querystring)
+print(response.text)
+</code></pre>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="phpgpt" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-php" tabindex="0"><code class="language-php">$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, 'https://anbusec.xyz/api/ai/gpt');
+$params['apikey'] = 'YOUR_API_KEY_HERE';
+$params['type'] = 'API_TYPE';
+$params['prompt'] = 'Bangladesh';
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($params));
+$result = curl_exec($ch);
+curl_close($ch);
+echo $result;
+</code></pre>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="curlgpt" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-curl" tabindex="0"><code class="language-curl">#!/bin/bash
+
+curl -X GET "https://anbusec.xyz/api/ai/gpt?apikey=YOUR_API_KEY_HERE&type=API_TYPE&prompt=Bangladesh"</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+          <h5 class="mt-2 text-900" data-bs-toggle="collapse" href="#table-request-params-gpt" role="button" aria-expanded="false" aria-controls="table-request-gpt" onclick="toggleCollapse(this)">Request parameters <i class="fa-solid fa-chevron-down text-900 h6"></i> </h5>
+
+          <div class="table-responsive collapse mt-2 scrollbar" id="table-request-params-gpt">
+            <table class="table table-sm border-200 fs--1 mb-0 scrollbar" style="min-width: 476px;">
+              <thead>
+                <tr>
+                  <th class="px-3 align-middle">Name</th>
+                  <th class="px-3 align-middle">Type</th>
+                  <th class="px-3 align-middle">Range</th>
+                  <th class="px-3 align-middle">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr>
+    <td class="px-3 align-middle" style="white-space: nowrap;">apikey<span class="text-danger"> *</span></td>
+    <td class="px-3 align-middle">string</td>
+    <td class="px-3 align-middle">1-10</td>
+    <td class="px-3 align-middle">Your account apikey.</td>
+  </tr>	<tr>
+    <td class="px-3 align-middle" style="white-space: nowrap;">prompt<span class="text-danger"> *</span></td>
+    <td class="px-3 align-middle">string</td>
+    <td class="px-3 align-middle"></td>
+    <td class="px-3 align-middle">Your question.</td>
+  </tr>	<tr>
+    <td class="px-3 align-middle" style="white-space: nowrap;">type<span class="text-danger"> *</span></td>
+    <td class="px-3 align-middle">string</td>
+    <td class="px-3 align-middle">0-3</td>
+    <td class="px-3 align-middle">Type of api (ask or img).</td>
+  </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h5 class="mt-3 text-900" data-bs-toggle="collapse" href="#table-response-format-gpt" role="button" aria-expanded="false" aria-controls="table-response-gpt" onclick="toggleCollapse(this)">Response Example <i class="fa-solid fa-chevron-down text-900 h6"></i></h5>
+
+          <div class="scrollbar collapse" id="table-response-format-gpt" style="border: 1px solid rgba(var(--phoenix-300-rgb), var(--phoenix-border-opacity)); border-radius: 0.25rem; overflow: overlay">
+            <ul class="nav nav-underline scrollbar" role="tablist" style="flex-wrap: nowrap; overflow-x: auto; overflow-y: hidden; display: -webkit-box;">
+
+            </ul>
+
+            <div class="table-responsive ">
+              <div class="tab-content mt-2"><div class="mb-1 tab-pane fade active show" id="response-example-gpt" role="tabpanel">
+<div class="">
+<pre class="scrollbar line-numbers language-json" tabindex="0"><code class="language-json">"{\n    \"status\": true,\n    \"message\": \"How can I assist you?\"\n}\n\n{ \"status\": true, \"images\": [ { \"url\": \"https:\\\/\\\/oaidalleapiprodscus.blob.core.windows.net\\\/private\\\/org-TwptI1vlQ0C0SwBQCK8JuEbI\\\/user-hoBkhBUHUsRadUz3UVrqzBoW\\\/img-XvmKFY0OOjQlvFpUKyHcwqEw.png?st=2023-12-23T09%3A15%3A21Z&se=2023-12-23T11%3A15%3A21Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image\\\/png&skoid=6aaadede-4fb3-4698-a8f6-684d7786b067&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2023-12-22T23%3A17%3A23Z&ske=2023-12-23T23%3A17%3A23Z&sks=b&skv=2021-08-06&sig=x%2BOApNB9rnDkd0l\\\/31FTBj5IQZnVD%2B9sVO9GL7FPTT4%3D\" }, { \"url\": \"https:\\\/\\\/oaidalleapiprodscus.blob.core.windows.net\\\/private\\\/org-TwptI1vlQ0C0SwBQCK8JuEbI\\\/user-hoBkhBUHUsRadUz3UVrqzBoW\\\/img-25TglDuTFIysxTxebXFvdRIJ.png?st=2023-12-23T09%3A15%3A21Z&se=2023-12-23T11%3A15%3A21Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image\\\/png&skoid=6aaadede-4fb3-4698-a8f6-684d7786b067&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2023-12-22T23%3A17%3A23Z&ske=2023-12-23T23%3A17%3A23Z&sks=b&skv=2021-08-06&sig=fW8mblwjGYdrb8KpdH7Zl7fl3tWkQO5UWRbNvAW1dtY%3D\" }, { \"url\": \"https:\\\/\\\/oaidalleapiprodscus.blob.core.windows.net\\\/private\\\/org-TwptI1vlQ0C0SwBQCK8JuEbI\\\/user-hoBkhBUHUsRadUz3UVrqzBoW\\\/img-Qx1718J81AndOmDJ64uueEz1.png?st=2023-12-23T09%3A15%3A21Z&se=2023-12-23T11%3A15%3A21Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image\\\/png&skoid=6aaadede-4fb3-4698-a8f6-684d7786b067&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2023-12-22T23%3A17%3A23Z&ske=2023-12-23T23%3A17%3A23Z&sks=b&skv=2021-08-06&sig=rVbrX0Lj5q9FB4cjzIrANedJLplIqodZnm8dThctYfk%3D\" }, { \"url\": \"https:\\\/\\\/oaidalleapiprodscus.blob.core.windows.net\\\/private\\\/org-TwptI1vlQ0C0SwBQCK8JuEbI\\\/user-hoBkhBUHUsRadUz3UVrqzBoW\\\/img-k9ISE0DyGUB56283tjTCw7rI.png?st=2023-12-23T09%3A15%3A21Z&se=2023-12-23T11%3A15%3A21Z&sp=r&sv=2021-08-06&sr=b&rscd=inline&rsct=image\\\/png&skoid=6aaadede-4fb3-4698-a8f6-684d7786b067&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2023-12-22T23%3A17%3A23Z&ske=2023-12-23T23%3A17%3A23Z&sks=b&skv=2021-08-06&sig=OeRXTX15kPiW83tC6wp6sBNDawNoGtldBfr7NnpB1pY%3D\" } ] }"</code></pre>
+</div>
+</div></div>
+            </div>
+          </div>
+
+          <button class="btn btn-sm btn-phoenix-primary mt-3 try-it-out" data-api="gpt" data-method-color="<span class=&quot;token selector&quot;>GET</span>" data-method="get" data-endpoint="api/ai/gpt" data-decrease-request="1">Try it out</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></div><div class="row g-3 justify-content-start mt-1 align-items-stretch"><h2 class="mb-4 text-900" id="anime" data-anchor="data-anchor">anime <a href="#anime" class="anchorjs-link" aria-label="Anchor" data-anchorjs-icon="#"></a></h2><div class="col-12 col-md-6 col-xl-4 mb-3">
+  <div class="card shadow-none border border-300 px-1 mx-0">
+    <div class="card-header py-3 position-relative d-flex flex-column justify-content-between">
+      <div class="row g-3" style="flex-direction: column">
+        <div class="col-12 col-md">
+          <h5 class="text-900 mb-0" id="api/anime/anilist">
+            <span class="token selector">GET</span> api/anime/anilist&nbsp;&nbsp;
+            <span class="h6 text-900">(<span class="text-warning">0</span> request)</span>
+          </h5>
+          <p class="text-700 mb-0 mt-2">Get user details from anilist.</p>
+          <div class="language-url py-1 mt-1 mb-0 scrollbar user-select-all">
+            <code class="language-url">https://anbusec.xyz/api/anime/anilist?apikey=YOUR_API_KEY_HERE&user=ANILIST_USERNAME</code>
+          </div>
+        </div>
+        <div class="col mt-0">
+          <nav class="nav nav-underline justify-content-end doc-tab-nav align-items-center">
+            <button class="btn btn-link px-2 text-900 copy-code-btn" type="button" data-clipboard-text="https://anbusec.xyz/api/anime/anilist?apikey=YOUR_API_KEY_HERE&user=ANILIST_USERNAME" data-clipboard-toast="true">
+              <span class="fas fa-copy me-1" aria-hidden="true"></span>Copy Url
+            </button>
+            <a class="btn btn-sm btn-phoenix-primary ms-2 collapsed" data-bs-toggle="collapse" href="#anilist" role="button" aria-expanded="true" aria-controls="anilist">
+              <span class="fas fa-code me-1" aria-hidden="true"></span>Example
+            </a>
+          </nav>
+        </div>
+      </div>
+
+      <div class="row g-3">
+        <div class="card-body p-0">
+          <div class="code-collapse collapse" id="anilist">
+            <ul class="nav nav-underline" role="tablist">
+              <li class="nav-item" role="presentation">
+                <a class="nav-link active" data-bs-toggle="tab" href="#node.jsanilist" role="tab" aria-selected="false" tabindex="-1">Node.js</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#pythonanilist" role="tab" aria-selected="false" tabindex="-1">Python</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#phpanilist" role="tab" aria-selected="false" tabindex="-1">PHP</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#curlanilist" role="tab" aria-selected="false" tabindex="-1">cURL</a>
+              </li>
+            </ul>
+
+            <div class="tab-content mt-3">
+              <div class="tab-pane fade active show" id="node.jsanilist" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-javascript" tabindex="0"><code class="language-javascript">const axios = require('axios');
+(async () => {
+  try {
+    const response = await axios({
+      url: 'https://anbusec.xyz/api/anime/anilist',
+      method: 'GET',
+      params: {
+        'apikey': 'YOUR_API_KEY_HERE',
+        'user': 'ANILIST_USERNAME',
+      }
+    });
+    console.log(response.data);
+  }
+  catch (error) {
+    console.log(error);
+  }
+})();
+</code></pre>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="pythonanilist" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-python" tabindex="0"><code class="language-python">import requests
+
+url = 'https://anbusec.xyz/api/anime/anilist'
+querystring = {
+    'apikey': 'YOUR_API_KEY_HERE',
+    'user': 'ANILIST_USERNAME',
+}
+response = requests.request('GET', url, headers=headers, params=querystring)
+print(response.text)
+</code></pre>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="phpanilist" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-php" tabindex="0"><code class="language-php">$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, 'https://anbusec.xyz/api/anime/anilist');
+$params['apikey'] = 'YOUR_API_KEY_HERE';
+$params['user'] = 'ANILIST_USERNAME';
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($params));
+$result = curl_exec($ch);
+curl_close($ch);
+echo $result;
+</code></pre>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="curlanilist" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-curl" tabindex="0"><code class="language-curl">#!/bin/bash
+
+curl -X GET "https://anbusec.xyz/api/anime/anilist?apikey=YOUR_API_KEY_HERE&user=ANILIST_USERNAME"</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+          <h5 class="mt-2 text-900" data-bs-toggle="collapse" href="#table-request-params-anilist" role="button" aria-expanded="false" aria-controls="table-request-anilist" onclick="toggleCollapse(this)">Request parameters <i class="fa-solid fa-chevron-down text-900 h6"></i> </h5>
+
+          <div class="table-responsive collapse mt-2 scrollbar" id="table-request-params-anilist">
+            <table class="table table-sm border-200 fs--1 mb-0 scrollbar" style="min-width: 476px;">
+              <thead>
+                <tr>
+                  <th class="px-3 align-middle">Name</th>
+                  <th class="px-3 align-middle">Type</th>
+                  <th class="px-3 align-middle">Range</th>
+                  <th class="px-3 align-middle">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr>
+    <td class="px-3 align-middle" style="white-space: nowrap;">apikey<span class="text-danger"> *</span></td>
+    <td class="px-3 align-middle">string</td>
+    <td class="px-3 align-middle">1-10</td>
+    <td class="px-3 align-middle">Your api key.</td>
+  </tr>	<tr>
+    <td class="px-3 align-middle" style="white-space: nowrap;">user<span class="text-danger"> *</span></td>
+    <td class="px-3 align-middle">string</td>
+    <td class="px-3 align-middle"></td>
+    <td class="px-3 align-middle">Account username.</td>
+  </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h5 class="mt-3 text-900" data-bs-toggle="collapse" href="#table-response-format-anilist" role="button" aria-expanded="false" aria-controls="table-response-anilist" onclick="toggleCollapse(this)">Response Example <i class="fa-solid fa-chevron-down text-900 h6"></i></h5>
+
+          <div class="scrollbar collapse" id="table-response-format-anilist" style="border: 1px solid rgba(var(--phoenix-300-rgb), var(--phoenix-border-opacity)); border-radius: 0.25rem; overflow: overlay">
+            <ul class="nav nav-underline scrollbar" role="tablist" style="flex-wrap: nowrap; overflow-x: auto; overflow-y: hidden; display: -webkit-box;">
+
+            </ul>
+
+            <div class="table-responsive ">
+              <div class="tab-content mt-2"><div class="mb-1 tab-pane fade active show" id="response-example-anilist" role="tabpanel">
+<div class="">
+<pre class="scrollbar line-numbers language-json" tabindex="0"><code class="language-json">{
+    "status": true,
+    "name": "anbuinfosec",
+    "profile": "https:\/\/s4.anilist.co\/file\/anilistcdn\/user\/avatar\/large\/b6475004-YQJ34pvmuE12.jpg",
+    "cover": "https:\/\/s4.anilist.co\/file\/anilistcdn\/user\/banner\/large\/b6475004-YQJ34pvmuE12.jpg",
+    "anime": {
+        "totalAnime": "1",
+        "daysWatched": "0.3",
+        "meanScore": "19"
+    },
+    "manga": {
+        "totalManga": "N\/A",
+        "chaptersRead": "N\/A",
+        "meanScoreManga": "N\/A"
+    }
+}</code></pre>
+</div>
+</div></div>
+            </div>
+          </div>
+
+          <button class="btn btn-sm btn-phoenix-primary mt-3 try-it-out" data-api="anilist" data-method-color="<span class=&quot;token selector&quot;>GET</span>" data-method="get" data-endpoint="api/anime/anilist" data-decrease-request="1">Try it out</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><div class="col-12 col-md-6 col-xl-4 mb-3">
+  <div class="card shadow-none border border-300 px-1 mx-0">
+    <div class="card-header py-3 position-relative d-flex flex-column justify-content-between">
+      <div class="row g-3" style="flex-direction: column">
+        <div class="col-12 col-md">
+          <h5 class="text-900 mb-0" id="api/anime/neko">
+            <span class="token selector">GET</span> api/anime/neko&nbsp;&nbsp;
+            <span class="h6 text-900">(<span class="text-warning">0</span> request)</span>
+          </h5>
+          <p class="text-700 mb-0 mt-2">Get random neko.</p>
+          <div class="language-url py-1 mt-1 mb-0 scrollbar user-select-all">
+            <code class="language-url">https://anbusec.xyz/api/anime/neko?apikey=YOUR_API_KEY_HERE</code>
+          </div>
+        </div>
+        <div class="col mt-0">
+          <nav class="nav nav-underline justify-content-end doc-tab-nav align-items-center">
+            <button class="btn btn-link px-2 text-900 copy-code-btn" type="button" data-clipboard-text="https://anbusec.xyz/api/anime/neko?apikey=YOUR_API_KEY_HERE" data-clipboard-toast="true">
+              <span class="fas fa-copy me-1" aria-hidden="true"></span>Copy Url
+            </button>
+            <a class="btn btn-sm btn-phoenix-primary ms-2 collapsed" data-bs-toggle="collapse" href="#neko" role="button" aria-expanded="true" aria-controls="neko">
+              <span class="fas fa-code me-1" aria-hidden="true"></span>Example
+            </a>
+          </nav>
+        </div>
+      </div>
+
+      <div class="row g-3">
+        <div class="card-body p-0">
+          <div class="code-collapse collapse" id="neko">
+            <ul class="nav nav-underline" role="tablist">
+              <li class="nav-item" role="presentation">
+                <a class="nav-link active" data-bs-toggle="tab" href="#node.jsneko" role="tab" aria-selected="false" tabindex="-1">Node.js</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#pythonneko" role="tab" aria-selected="false" tabindex="-1">Python</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#phpneko" role="tab" aria-selected="false" tabindex="-1">PHP</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#curlneko" role="tab" aria-selected="false" tabindex="-1">cURL</a>
+              </li>
+            </ul>
+
+            <div class="tab-content mt-3">
+              <div class="tab-pane fade active show" id="node.jsneko" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-javascript" tabindex="0"><code class="language-javascript">const axios = require('axios');
+(async () => {
+  try {
+    const response = await axios({
+      url: 'https://anbusec.xyz/api/anime/neko',
+      method: 'GET',
+      params: {
+        'apikey': 'YOUR_API_KEY_HERE',
+      }
+    });
+    console.log(response.data);
+  }
+  catch (error) {
+    console.log(error);
+  }
+})();
+</code></pre>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="pythonneko" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-python" tabindex="0"><code class="language-python">import requests
+
+url = 'https://anbusec.xyz/api/anime/neko'
+querystring = {
+    'apikey': 'YOUR_API_KEY_HERE',
+}
+response = requests.request('GET', url, headers=headers, params=querystring)
+print(response.text)
+</code></pre>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="phpneko" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-php" tabindex="0"><code class="language-php">$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, 'https://anbusec.xyz/api/anime/neko');
+$params['apikey'] = 'YOUR_API_KEY_HERE';
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($params));
+$result = curl_exec($ch);
+curl_close($ch);
+echo $result;
+</code></pre>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="curlneko" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-curl" tabindex="0"><code class="language-curl">#!/bin/bash
+
+curl -X GET "https://anbusec.xyz/api/anime/neko?apikey=YOUR_API_KEY_HERE"</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+          <h5 class="mt-2 text-900" data-bs-toggle="collapse" href="#table-request-params-neko" role="button" aria-expanded="false" aria-controls="table-request-neko" onclick="toggleCollapse(this)">Request parameters <i class="fa-solid fa-chevron-down text-900 h6"></i> </h5>
+
+          <div class="table-responsive collapse mt-2 scrollbar" id="table-request-params-neko">
+            <table class="table table-sm border-200 fs--1 mb-0 scrollbar" style="min-width: 476px;">
+              <thead>
+                <tr>
+                  <th class="px-3 align-middle">Name</th>
+                  <th class="px-3 align-middle">Type</th>
+                  <th class="px-3 align-middle">Range</th>
+                  <th class="px-3 align-middle">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr>
+    <td class="px-3 align-middle" style="white-space: nowrap;">apikey<span class="text-danger"> *</span></td>
+    <td class="px-3 align-middle">string</td>
+    <td class="px-3 align-middle">1-10</td>
+    <td class="px-3 align-middle">Your account api key.</td>
+  </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h5 class="mt-3 text-900" data-bs-toggle="collapse" href="#table-response-format-neko" role="button" aria-expanded="false" aria-controls="table-response-neko" onclick="toggleCollapse(this)">Response Example <i class="fa-solid fa-chevron-down text-900 h6"></i></h5>
+
+          <div class="scrollbar collapse" id="table-response-format-neko" style="border: 1px solid rgba(var(--phoenix-300-rgb), var(--phoenix-border-opacity)); border-radius: 0.25rem; overflow: overlay">
+            <ul class="nav nav-underline scrollbar" role="tablist" style="flex-wrap: nowrap; overflow-x: auto; overflow-y: hidden; display: -webkit-box;">
+
+            </ul>
+
+            <div class="table-responsive ">
+              <div class="tab-content mt-2"><div class="mb-1 tab-pane fade active show" id="response-example-neko" role="tabpanel">
+<div class="">
+<pre class="scrollbar line-numbers language-json" tabindex="0"><code class="language-json">{
+    "status": true,
+    "name": "Lucky Star",
+    "url": "https:\/\/nekos.best\/api\/v2\/dance\/2cc51c2d-745c-4e6e-866d-80d01f31712e.gif",
+    "author": "https:\/\/facebook.com\/anbuinfosec"
+}</code></pre>
+</div>
+</div></div>
+            </div>
+          </div>
+
+          <button class="btn btn-sm btn-phoenix-primary mt-3 try-it-out" data-api="neko" data-method-color="<span class=&quot;token selector&quot;>GET</span>" data-method="get" data-endpoint="api/anime/neko" data-decrease-request="1">Try it out</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><div class="col-12 col-md-6 col-xl-4 mb-3">
+  <div class="card shadow-none border border-300 px-1 mx-0">
+    <div class="card-header py-3 position-relative d-flex flex-column justify-content-between">
+      <div class="row g-3" style="flex-direction: column">
+        <div class="col-12 col-md">
+          <h5 class="text-900 mb-0" id="api/anime/pairdp">
+            <span class="token selector">GET</span> api/anime/pairdp&nbsp;&nbsp;
+            <span class="h6 text-900">(<span class="text-warning">0</span> request)</span>
+          </h5>
+          <p class="text-700 mb-0 mt-2">Get random anime couple dp.</p>
+          <div class="language-url py-1 mt-1 mb-0 scrollbar user-select-all">
+            <code class="language-url">https://anbusec.xyz/api/anime/pairdp?apikey=YOUR_API_KEY_HERE</code>
+          </div>
+        </div>
+        <div class="col mt-0">
+          <nav class="nav nav-underline justify-content-end doc-tab-nav align-items-center">
+            <button class="btn btn-link px-2 text-900 copy-code-btn" type="button" data-clipboard-text="https://anbusec.xyz/api/anime/pairdp?apikey=YOUR_API_KEY_HERE" data-clipboard-toast="true">
+              <span class="fas fa-copy me-1" aria-hidden="true"></span>Copy Url
+            </button>
+            <a class="btn btn-sm btn-phoenix-primary ms-2 collapsed" data-bs-toggle="collapse" href="#pairdp" role="button" aria-expanded="true" aria-controls="pairdp">
+              <span class="fas fa-code me-1" aria-hidden="true"></span>Example
+            </a>
+          </nav>
+        </div>
+      </div>
+
+      <div class="row g-3">
+        <div class="card-body p-0">
+          <div class="code-collapse collapse" id="pairdp">
+            <ul class="nav nav-underline" role="tablist">
+              <li class="nav-item" role="presentation">
+                <a class="nav-link active" data-bs-toggle="tab" href="#node.jspairdp" role="tab" aria-selected="false" tabindex="-1">Node.js</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#pythonpairdp" role="tab" aria-selected="false" tabindex="-1">Python</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#phppairdp" role="tab" aria-selected="false" tabindex="-1">PHP</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#curlpairdp" role="tab" aria-selected="false" tabindex="-1">cURL</a>
+              </li>
+            </ul>
+
+            <div class="tab-content mt-3">
+              <div class="tab-pane fade active show" id="node.jspairdp" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-javascript" tabindex="0"><code class="language-javascript">const axios = require('axios');
+(async () => {
+  try {
+    const response = await axios({
+      url: 'https://anbusec.xyz/api/anime/pairdp',
+      method: 'GET',
+      params: {
+        'apikey': 'YOUR_API_KEY_HERE',
+      }
+    });
+    console.log(response.data);
+  }
+  catch (error) {
+    console.log(error);
+  }
+})();
+</code></pre>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="pythonpairdp" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-python" tabindex="0"><code class="language-python">import requests
+
+url = 'https://anbusec.xyz/api/anime/pairdp'
+querystring = {
+    'apikey': 'YOUR_API_KEY_HERE',
+}
+response = requests.request('GET', url, headers=headers, params=querystring)
+print(response.text)
+</code></pre>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="phppairdp" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-php" tabindex="0"><code class="language-php">$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, 'https://anbusec.xyz/api/anime/pairdp');
+$params['apikey'] = 'YOUR_API_KEY_HERE';
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($params));
+$result = curl_exec($ch);
+curl_close($ch);
+echo $result;
+</code></pre>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="curlpairdp" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-curl" tabindex="0"><code class="language-curl">#!/bin/bash
+
+curl -X GET "https://anbusec.xyz/api/anime/pairdp?apikey=YOUR_API_KEY_HERE"</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+          <h5 class="mt-2 text-900" data-bs-toggle="collapse" href="#table-request-params-pairdp" role="button" aria-expanded="false" aria-controls="table-request-pairdp" onclick="toggleCollapse(this)">Request parameters <i class="fa-solid fa-chevron-down text-900 h6"></i> </h5>
+
+          <div class="table-responsive collapse mt-2 scrollbar" id="table-request-params-pairdp">
+            <table class="table table-sm border-200 fs--1 mb-0 scrollbar" style="min-width: 476px;">
+              <thead>
+                <tr>
+                  <th class="px-3 align-middle">Name</th>
+                  <th class="px-3 align-middle">Type</th>
+                  <th class="px-3 align-middle">Range</th>
+                  <th class="px-3 align-middle">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr>
+    <td class="px-3 align-middle" style="white-space: nowrap;">apikey<span class="text-danger"> *</span></td>
+    <td class="px-3 align-middle">string</td>
+    <td class="px-3 align-middle">1-10</td>
+    <td class="px-3 align-middle">Your account api key.</td>
+  </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h5 class="mt-3 text-900" data-bs-toggle="collapse" href="#table-response-format-pairdp" role="button" aria-expanded="false" aria-controls="table-response-pairdp" onclick="toggleCollapse(this)">Response Example <i class="fa-solid fa-chevron-down text-900 h6"></i></h5>
+
+          <div class="scrollbar collapse" id="table-response-format-pairdp" style="border: 1px solid rgba(var(--phoenix-300-rgb), var(--phoenix-border-opacity)); border-radius: 0.25rem; overflow: overlay">
+            <ul class="nav nav-underline scrollbar" role="tablist" style="flex-wrap: nowrap; overflow-x: auto; overflow-y: hidden; display: -webkit-box;">
+
+            </ul>
+
+            <div class="table-responsive ">
+              <div class="tab-content mt-2"><div class="mb-1 tab-pane fade active show" id="response-example-pairdp" role="tabpanel">
+<div class="">
+<pre class="scrollbar line-numbers language-json" tabindex="0"><code class="language-json">{
+    "status": true,
+    "male": "https:\/\/i.pinimg.com\/564x\/e8\/16\/e7\/e816e731bda6d662080f82b422a0588b.jpg",
+    "female": "https:\/\/i.pinimg.com\/564x\/fe\/3f\/23\/fe3f230ce06cdda4fd67c711ac2fbe1f.jpg",
+    "author": "https:\/\/facebook.com\/anbuinfosec"
+}</code></pre>
+</div>
+</div></div>
+            </div>
+          </div>
+
+          <button class="btn btn-sm btn-phoenix-primary mt-3 try-it-out" data-api="pairdp" data-method-color="<span class=&quot;token selector&quot;>GET</span>" data-method="get" data-endpoint="api/anime/pairdp" data-decrease-request="1">Try it out</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><div class="col-12 col-md-6 col-xl-4 mb-3">
+  <div class="card shadow-none border border-300 px-1 mx-0">
+    <div class="card-header py-3 position-relative d-flex flex-column justify-content-between">
+      <div class="row g-3" style="flex-direction: column">
+        <div class="col-12 col-md">
+          <h5 class="text-900 mb-0" id="api/anime/trace">
+            <span class="token selector">GET</span> api/anime/trace&nbsp;&nbsp;
+            <span class="h6 text-900">(<span class="text-warning">0</span> request)</span>
+          </h5>
+          <p class="text-700 mb-0 mt-2">Trace anime using photo url.</p>
+          <div class="language-url py-1 mt-1 mb-0 scrollbar user-select-all">
+            <code class="language-url">https://anbusec.xyz/api/anime/trace?apikey=YOUR_API_KEY_HERE&url=ANIME_PHOTO_UTL</code>
+          </div>
+        </div>
+        <div class="col mt-0">
+          <nav class="nav nav-underline justify-content-end doc-tab-nav align-items-center">
+            <button class="btn btn-link px-2 text-900 copy-code-btn" type="button" data-clipboard-text="https://anbusec.xyz/api/anime/trace?apikey=YOUR_API_KEY_HERE&url=ANIME_PHOTO_UTL" data-clipboard-toast="true">
+              <span class="fas fa-copy me-1" aria-hidden="true"></span>Copy Url
+            </button>
+            <a class="btn btn-sm btn-phoenix-primary ms-2 collapsed" data-bs-toggle="collapse" href="#trace" role="button" aria-expanded="true" aria-controls="trace">
+              <span class="fas fa-code me-1" aria-hidden="true"></span>Example
+            </a>
+          </nav>
+        </div>
+      </div>
+
+      <div class="row g-3">
+        <div class="card-body p-0">
+          <div class="code-collapse collapse" id="trace">
+            <ul class="nav nav-underline" role="tablist">
+              <li class="nav-item" role="presentation">
+                <a class="nav-link active" data-bs-toggle="tab" href="#node.jstrace" role="tab" aria-selected="false" tabindex="-1">Node.js</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#pythontrace" role="tab" aria-selected="false" tabindex="-1">Python</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#phptrace" role="tab" aria-selected="false" tabindex="-1">PHP</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#curltrace" role="tab" aria-selected="false" tabindex="-1">cURL</a>
+              </li>
+            </ul>
+
+            <div class="tab-content mt-3">
+              <div class="tab-pane fade active show" id="node.jstrace" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-javascript" tabindex="0"><code class="language-javascript">const axios = require('axios');
+(async () => {
+  try {
+    const response = await axios({
+      url: 'https://anbusec.xyz/api/anime/trace',
+      method: 'GET',
+      params: {
+        'apikey': 'YOUR_API_KEY_HERE',
+        'url': 'ANIME_PHOTO_UTL',
+      }
+    });
+    console.log(response.data);
+  }
+  catch (error) {
+    console.log(error);
+  }
+})();
+</code></pre>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="pythontrace" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-python" tabindex="0"><code class="language-python">import requests
+
+url = 'https://anbusec.xyz/api/anime/trace'
+querystring = {
+    'apikey': 'YOUR_API_KEY_HERE',
+    'url': 'ANIME_PHOTO_UTL',
+}
+response = requests.request('GET', url, headers=headers, params=querystring)
+print(response.text)
+</code></pre>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="phptrace" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-php" tabindex="0"><code class="language-php">$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, 'https://anbusec.xyz/api/anime/trace');
+$params['apikey'] = 'YOUR_API_KEY_HERE';
+$params['url'] = 'ANIME_PHOTO_UTL';
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($params));
+$result = curl_exec($ch);
+curl_close($ch);
+echo $result;
+</code></pre>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="curltrace" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-curl" tabindex="0"><code class="language-curl">#!/bin/bash
+
+curl -X GET "https://anbusec.xyz/api/anime/trace?apikey=YOUR_API_KEY_HERE&url=ANIME_PHOTO_UTL"</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+          <h5 class="mt-2 text-900" data-bs-toggle="collapse" href="#table-request-params-trace" role="button" aria-expanded="false" aria-controls="table-request-trace" onclick="toggleCollapse(this)">Request parameters <i class="fa-solid fa-chevron-down text-900 h6"></i> </h5>
+
+          <div class="table-responsive collapse mt-2 scrollbar" id="table-request-params-trace">
+            <table class="table table-sm border-200 fs--1 mb-0 scrollbar" style="min-width: 476px;">
+              <thead>
+                <tr>
+                  <th class="px-3 align-middle">Name</th>
+                  <th class="px-3 align-middle">Type</th>
+                  <th class="px-3 align-middle">Range</th>
+                  <th class="px-3 align-middle">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr>
+    <td class="px-3 align-middle" style="white-space: nowrap;">APIKEY<span class="text-danger"> *</span></td>
+    <td class="px-3 align-middle">string</td>
+    <td class="px-3 align-middle">1-10</td>
+    <td class="px-3 align-middle">Your account api key.</td>
+  </tr>	<tr>
+    <td class="px-3 align-middle" style="white-space: nowrap;">url<span class="text-danger"> *</span></td>
+    <td class="px-3 align-middle">string</td>
+    <td class="px-3 align-middle"></td>
+    <td class="px-3 align-middle">Anime seen photo url.</td>
+  </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h5 class="mt-3 text-900" data-bs-toggle="collapse" href="#table-response-format-trace" role="button" aria-expanded="false" aria-controls="table-response-trace" onclick="toggleCollapse(this)">Response Example <i class="fa-solid fa-chevron-down text-900 h6"></i></h5>
+
+          <div class="scrollbar collapse" id="table-response-format-trace" style="border: 1px solid rgba(var(--phoenix-300-rgb), var(--phoenix-border-opacity)); border-radius: 0.25rem; overflow: overlay">
+            <ul class="nav nav-underline scrollbar" role="tablist" style="flex-wrap: nowrap; overflow-x: auto; overflow-y: hidden; display: -webkit-box;">
+
+            </ul>
+
+            <div class="table-responsive ">
+              <div class="tab-content mt-2"><div class="mb-1 tab-pane fade active show" id="response-example-trace" role="tabpanel">
+<div class="">
+<pre class="scrollbar line-numbers language-json" tabindex="0"><code class="language-json">{
+    "frameCount": 6703226,
+    "error": "",
+    "result": [
+        {
+            "anilist": 21731,
+            "filename": "[Leopard-Raws] Hand Shakers - 12 END (BS11 1280x720 x264 AAC).mp4",
+            "episode": 12,
+            "from": 429.67,
+            "to": 430.67,
+            "similarity": 0.7868365790654657,
+            "video": "https:\/\/media.trace.moe\/video\/21731\/%5BLeopard-Raws%5D%20Hand%20Shakers%20-%2012%20END%20(BS11%201280x720%20x264%20AAC).mp4?t=430.17&now=1701882000&token=C79EJqBE0SxFkNvcPyGrc1sBSA",
+            "image": "https:\/\/media.trace.moe\/image\/21731\/%5BLeopard-Raws%5D%20Hand%20Shakers%20-%2012%20END%20(BS11%201280x720%20x264%20AAC).mp4.jpg?t=430.17&now=1701882000&token=1cvTu6SZtD4OEQ4OhTjHvjpyfTE"
+        },
+        {
+            "anilist": 21731,
+            "filename": "[Ohys-Raws] Hand Shakers - 12 END (MX 1280x720 x264 AAC).mp4",
+            "episode": 12,
+            "from": 429.75,
+            "to": 430.92,
+            "similarity": 0.7811894847916534,
+            "video": "https:\/\/media.trace.moe\/video\/21731\/%5BOhys-Raws%5D%20Hand%20Shakers%20-%2012%20END%20(MX%201280x720%20x264%20AAC).mp4?t=430.33500000000004&now=1701882000&token=pMlUj4Z7j7uhsLQkxvj7X4",
+            "image": "https:\/\/media.trace.moe\/image\/21731\/%5BOhys-Raws%5D%20Hand%20Shakers%20-%2012%20END%20(MX%201280x720%20x264%20AAC).mp4.jpg?t=430.33500000000004&now=1701882000&token=zu18h0v27AZnBMSIHnwNinoy2c"
+        },
+        {
+            "anilist": 21,
+            "filename": "[OPFansMaplesnow][one_piece][347][HDTV][x264_AAC][1280x720].mp4",
+            "episode": 347,
+            "from": 466.83,
+            "to": 468.08,
+            "similarity": 0.7776408073496657,
+            "video": "https:\/\/media.trace.moe\/video\/21\/%5BOPFansMaplesnow%5D%5Bone_piece%5D%5B347%5D%5BHDTV%5D%5Bx264_AAC%5D%5B1280x720%5D.mp4?t=467.455&now=1701882000&token=99GvboIIR5tBV2a9eULvPQiJzM",
+            "image": "https:\/\/media.trace.moe\/image\/21\/%5BOPFansMaplesnow%5D%5Bone_piece%5D%5B347%5D%5BHDTV%5D%5Bx264_AAC%5D%5B1280x720%5D.mp4.jpg?t=467.455&now=1701882000&token=GaxhENa1QcQNwX8Dy0Xxev0p4"
+        },
+        {
+            "anilist": 21731,
+            "filename": "Hand Shakers - 12 (BD 1280x720 x264 AAC).mp4",
+            "episode": 12,
+            "from": 419.92,
+            "to": 421,
+            "similarity": 0.7670897215318011,
+            "video": "https:\/\/media.trace.moe\/video\/21731\/Hand%20Shakers%20-%2012%20(BD%201280x720%20x264%20AAC).mp4?t=420.46000000000004&now=1701882000&token=ygwaFtm0ISSbPvfFhyWFaFtoMBI",
+            "image": "https:\/\/media.trace.moe\/image\/21731\/Hand%20Shakers%20-%2012%20(BD%201280x720%20x264%20AAC).mp4.jpg?t=420.46000000000004&now=1701882000&token=XEHsPEMS6VR3jNXLOMbKpJTYUL4"
+        },
+        {
+            "anilist": 21,
+            "filename": "[OPFansMaplesnow][one_piece][347][HDTV][x264_AAC][1280x720].mp4",
+            "episode": 347,
+            "from": 460,
+            "to": 461.33,
+            "similarity": 0.7574580221643578,
+            "video": "https:\/\/media.trace.moe\/video\/21\/%5BOPFansMaplesnow%5D%5Bone_piece%5D%5B347%5D%5BHDTV%5D%5Bx264_AAC%5D%5B1280x720%5D.mp4?t=460.66499999999996&now=1701882000&token=rKnTAnrdFEjY2rlmNsTaBvRJ8W4",
+            "image": "https:\/\/media.trace.moe\/image\/21\/%5BOPFansMaplesnow%5D%5Bone_piece%5D%5B347%5D%5BHDTV%5D%5Bx264_AAC%5D%5B1280x720%5D.mp4.jpg?t=460.66499999999996&now=1701882000&token=2y566Q9MfjhnI3Y3w3l0pxDEj8g"
+        },
+        {
+            "anilist": 107339,
+            "filename": "[Ohys-Raws] Hataage! Kemono Michi - 12 END (AT-X 1280x720 x264 AAC).mp4",
+            "episode": 12,
+            "from": 877.58,
+            "to": 877.83,
+            "similarity": 0.75641742601928,
+            "video": "https:\/\/media.trace.moe\/video\/107339\/%5BOhys-Raws%5D%20Hataage!%20Kemono%20Michi%20-%2012%20END%20(AT-X%201280x720%20x264%20AAC).mp4?t=877.705&now=1701882000&token=iggBUY17rLz5k1NyD564JvIuqE",
+            "image": "https:\/\/media.trace.moe\/image\/107339\/%5BOhys-Raws%5D%20Hataage!%20Kemono%20Michi%20-%2012%20END%20(AT-X%201280x720%20x264%20AAC).mp4.jpg?t=877.705&now=1701882000&token=7CzBlfbzrpp3HTzY9WFv4YexDNk"
+        },
+        {
+            "anilist": 119123,
+            "filename": "[Ohys-Raws] Soukou Musume Senki - 09 (MX 1280x720 x264 AAC).mp4",
+            "episode": 9,
+            "from": 1150.42,
+            "to": 1151.17,
+            "similarity": 0.7543519352145119,
+            "video": "https:\/\/media.trace.moe\/video\/119123\/%5BOhys-Raws%5D%20Soukou%20Musume%20Senki%20-%2009%20(MX%201280x720%20x264%20AAC).mp4?t=1150.795&now=1701882000&token=vCPFoK1XjIcJxnyaigGBiHaGEMA",
+            "image": "https:\/\/media.trace.moe\/image\/119123\/%5BOhys-Raws%5D%20Soukou%20Musume%20Senki%20-%2009%20(MX%201280x720%20x264%20AAC).mp4.jpg?t=1150.795&now=1701882000&token=TOkz8q3gW5091Hl8SYRrxKQQ"
+        },
+        {
+            "anilist": 9330,
+            "filename": "[SC-OL][Dragon Crisis!][03][BIG5][848X480].mp4",
+            "episode": 3,
+            "from": 1313.17,
+            "to": 1314.83,
+            "similarity": 0.7531976133087918,
+            "video": "https:\/\/media.trace.moe\/video\/9330\/%5BSC-OL%5D%5BDragon%20Crisis!%5D%5B03%5D%5BBIG5%5D%5B848X480%5D.mp4?t=1314&now=1701882000&token=yEc6LE9AcXj8JktlqX42mRMck",
+            "image": "https:\/\/media.trace.moe\/image\/9330\/%5BSC-OL%5D%5BDragon%20Crisis!%5D%5B03%5D%5BBIG5%5D%5B848X480%5D.mp4.jpg?t=1314&now=1701882000&token=49JOOx6wggywuLBMGYd54xioMOU"
+        },
+        {
+            "anilist": 101167,
+            "filename": "[Leopard-Raws] Dungeon ni Deai o Motomeru no wa Machigatte Iru Darouka II - 08 RAW (BS11 1280x720 x264 AAC).mp4",
+            "episode": 8,
+            "from": 121.75,
+            "to": 123.83,
+            "similarity": 0.752389543031325,
+            "video": "https:\/\/media.trace.moe\/video\/101167\/%5BLeopard-Raws%5D%20Dungeon%20ni%20Deai%20o%20Motomeru%20no%20wa%20Machigatte%20Iru%20Darouka%20II%20-%2008%20RAW%20(BS11%201280x720%20x264%20AAC).mp4?t=122.78999999999999&now=1701882000&token=WrvdzJigfIGGCcTXxhSFlppUc",
+            "image": "https:\/\/media.trace.moe\/image\/101167\/%5BLeopard-Raws%5D%20Dungeon%20ni%20Deai%20o%20Motomeru%20no%20wa%20Machigatte%20Iru%20Darouka%20II%20-%2008%20RAW%20(BS11%201280x720%20x264%20AAC).mp4.jpg?t=122.78999999999999&now=1701882000&token=97r2WNvd5QZWt039Dkw2TjeOaFY"
+        },
+        {
+            "anilist": 101167,
+            "filename": "[Ohys-Raws] Dungeon ni Deai o Motomeru no wa Machigatte Iru Darouka Familia Myth II - 08 (AT-X 1280x720 x264 AAC).mp4",
+            "episode": 8,
+            "from": 121.75,
+            "to": 123.92,
+            "similarity": 0.752389543031325,
+            "video": "https:\/\/media.trace.moe\/video\/101167\/%5BOhys-Raws%5D%20Dungeon%20ni%20Deai%20o%20Motomeru%20no%20wa%20Machigatte%20Iru%20Darouka%20Familia%20Myth%20II%20-%2008%20(AT-X%201280x720%20x264%20AAC).mp4?t=122.83500000000001&now=1701882000&token=gZnV55WfnjtBWWolKpO9q6JnzNM",
+            "image": "https:\/\/media.trace.moe\/image\/101167\/%5BOhys-Raws%5D%20Dungeon%20ni%20Deai%20o%20Motomeru%20no%20wa%20Machigatte%20Iru%20Darouka%20Familia%20Myth%20II%20-%2008%20(AT-X%201280x720%20x264%20AAC).mp4.jpg?t=122.83500000000001&now=1701882000&token=hhuXAUaq6S7lugdiIV4Z2WalR8U"
+        }
+    ]
+}</code></pre>
+</div>
+</div></div>
+            </div>
+          </div>
+
+          <button class="btn btn-sm btn-phoenix-primary mt-3 try-it-out" data-api="trace" data-method-color="<span class=&quot;token selector&quot;>GET</span>" data-method="get" data-endpoint="api/anime/trace" data-decrease-request="1">Try it out</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></div><div class="row g-3 justify-content-start mt-1 align-items-stretch"><h2 class="mb-4 text-900" id="downloader" data-anchor="data-anchor">downloader <a href="#downloader" class="anchorjs-link" aria-label="Anchor" data-anchorjs-icon="#"></a></h2><div class="col-12 col-md-6 col-xl-4 mb-3">
+  <div class="card shadow-none border border-300 px-1 mx-0">
+    <div class="card-header py-3 position-relative d-flex flex-column justify-content-between">
+      <div class="row g-3" style="flex-direction: column">
+        <div class="col-12 col-md">
+          <h5 class="text-900 mb-0" id="api/downloader/facebook">
+            <span class="token selector">GET</span> api/downloader/facebook&nbsp;&nbsp;
+            <span class="h6 text-900">(<span class="text-warning">0</span> request)</span>
+          </h5>
+          <p class="text-700 mb-0 mt-2">Download public facebook video, reels, story.</p>
+          <div class="language-url py-1 mt-1 mb-0 scrollbar user-select-all">
+            <code class="language-url">https://anbusec.xyz/api/downloader/facebook?apikey=YOUR_API_KEY_HERE&url=YOUR_VIDEO_URL</code>
+          </div>
+        </div>
+        <div class="col mt-0">
+          <nav class="nav nav-underline justify-content-end doc-tab-nav align-items-center">
+            <button class="btn btn-link px-2 text-900 copy-code-btn" type="button" data-clipboard-text="https://anbusec.xyz/api/downloader/facebook?apikey=YOUR_API_KEY_HERE&url=YOUR_VIDEO_URL" data-clipboard-toast="true">
+              <span class="fas fa-copy me-1" aria-hidden="true"></span>Copy Url
+            </button>
+            <a class="btn btn-sm btn-phoenix-primary ms-2 collapsed" data-bs-toggle="collapse" href="#facebook" role="button" aria-expanded="true" aria-controls="facebook">
+              <span class="fas fa-code me-1" aria-hidden="true"></span>Example
+            </a>
+          </nav>
+        </div>
+      </div>
+
+      <div class="row g-3">
+        <div class="card-body p-0">
+          <div class="code-collapse collapse" id="facebook">
+            <ul class="nav nav-underline" role="tablist">
+              <li class="nav-item" role="presentation">
+                <a class="nav-link active" data-bs-toggle="tab" href="#node.jsfacebook" role="tab" aria-selected="false" tabindex="-1">Node.js</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#pythonfacebook" role="tab" aria-selected="false" tabindex="-1">Python</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#phpfacebook" role="tab" aria-selected="false" tabindex="-1">PHP</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#curlfacebook" role="tab" aria-selected="false" tabindex="-1">cURL</a>
+              </li>
+            </ul>
+
+            <div class="tab-content mt-3">
+              <div class="tab-pane fade active show" id="node.jsfacebook" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-javascript" tabindex="0"><code class="language-javascript">const axios = require('axios');
+(async () => {
+  try {
+    const response = await axios({
+      url: 'https://anbusec.xyz/api/downloader/facebook',
+      method: 'GET',
+      params: {
+        'apikey': 'YOUR_API_KEY_HERE',
+        'url': 'YOUR_VIDEO_URL',
+      }
+    });
+    console.log(response.data);
+  }
+  catch (error) {
+    console.log(error);
+  }
+})();
+</code></pre>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="pythonfacebook" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-python" tabindex="0"><code class="language-python">import requests
+
+url = 'https://anbusec.xyz/api/downloader/facebook'
+querystring = {
+    'apikey': 'YOUR_API_KEY_HERE',
+    'url': 'YOUR_VIDEO_URL',
+}
+response = requests.request('GET', url, headers=headers, params=querystring)
+print(response.text)
+</code></pre>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="phpfacebook" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-php" tabindex="0"><code class="language-php">$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, 'https://anbusec.xyz/api/downloader/facebook');
+$params['apikey'] = 'YOUR_API_KEY_HERE';
+$params['url'] = 'YOUR_VIDEO_URL';
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($params));
+$result = curl_exec($ch);
+curl_close($ch);
+echo $result;
+</code></pre>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="curlfacebook" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-curl" tabindex="0"><code class="language-curl">#!/bin/bash
+
+curl -X GET "https://anbusec.xyz/api/downloader/facebook?apikey=YOUR_API_KEY_HERE&url=YOUR_VIDEO_URL"</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+          <h5 class="mt-2 text-900" data-bs-toggle="collapse" href="#table-request-params-facebook" role="button" aria-expanded="false" aria-controls="table-request-facebook" onclick="toggleCollapse(this)">Request parameters <i class="fa-solid fa-chevron-down text-900 h6"></i> </h5>
+
+          <div class="table-responsive collapse mt-2 scrollbar" id="table-request-params-facebook">
+            <table class="table table-sm border-200 fs--1 mb-0 scrollbar" style="min-width: 476px;">
+              <thead>
+                <tr>
+                  <th class="px-3 align-middle">Name</th>
+                  <th class="px-3 align-middle">Type</th>
+                  <th class="px-3 align-middle">Range</th>
+                  <th class="px-3 align-middle">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr>
+    <td class="px-3 align-middle" style="white-space: nowrap;">apikey<span class="text-danger"> *</span></td>
+    <td class="px-3 align-middle">string</td>
+    <td class="px-3 align-middle">1-10</td>
+    <td class="px-3 align-middle">Parameter 1</td>
+  </tr>	<tr>
+    <td class="px-3 align-middle" style="white-space: nowrap;">url<span class="text-danger"> *</span></td>
+    <td class="px-3 align-middle">string</td>
+    <td class="px-3 align-middle"></td>
+    <td class="px-3 align-middle">Facebook public video/reels/story url.</td>
+  </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h5 class="mt-3 text-900" data-bs-toggle="collapse" href="#table-response-format-facebook" role="button" aria-expanded="false" aria-controls="table-response-facebook" onclick="toggleCollapse(this)">Response Example <i class="fa-solid fa-chevron-down text-900 h6"></i></h5>
+
+          <div class="scrollbar collapse" id="table-response-format-facebook" style="border: 1px solid rgba(var(--phoenix-300-rgb), var(--phoenix-border-opacity)); border-radius: 0.25rem; overflow: overlay">
+            <ul class="nav nav-underline scrollbar" role="tablist" style="flex-wrap: nowrap; overflow-x: auto; overflow-y: hidden; display: -webkit-box;">
+
+            </ul>
+
+            <div class="table-responsive ">
+              <div class="tab-content mt-2"><div class="mb-1 tab-pane fade active show" id="response-example-facebook" role="tabpanel">
+<div class="">
+<pre class="scrollbar line-numbers language-json" tabindex="0"><code class="language-json">{
+    "status": true,
+    "url": "https:\/\/video-lis1-1.xx.fbcdn.net\/v\/t39.25447-2\/408244000_319356607614358_6449540474709035362_n.mp4?_nc_cat=110&vs=bbd1ba3612cad418&_nc_vs=HBksFQAYJEdDQlBWUmlXVFNjQmRDSUJBR0pKaWYtalhvRlpibWRqQUFBRhUAAsgBABUAGCRHTFFDVGhnbjNfVk5kZHNNQUZGVGs2N3JiczFBYnY0R0FBQUYVAgLIAQBLB4gScHJvZ3Jlc3NpdmVfcmVjaXBlATENc3Vic2FtcGxlX2ZwcwAQdm1hZl9lbmFibGVfbnN1YgAgbWVhc3VyZV9vcmlnaW5hbF9yZXNvbHV0aW9uX3NzaW0AKGNvbXB1dGVfc3NpbV9vbmx5X2F0X29yaWdpbmFsX3Jlc29sdXRpb24AHXVzZV9sYW5jem9zX2Zvcl92cW1fdXBzY2FsaW5nABFkaXNhYmxlX3Bvc3RfcHZxcwAVACUAHIwXQAAAAAAAAAAREQAAACbu4e2b3J6fARUCKAJDMxgLdnRzX3ByZXZpZXccF0BLwi0OVgQZGCFkYXNoX2dlbjJod2Jhc2ljX2hxMl9mcmFnXzJfdmlkZW8SABgYdmlkZW9zLnZ0cy5jYWxsYmFjay5wcm9kOBJWSURFT19WSUVXX1JFUVVFU1QbCogVb2VtX3RhcmdldF9lbmNvZGVfdGFnBm9lcF9oZBNvZW1fcmVxdWVzdF90aW1lX21zATAMb2VtX2NmZ19ydWxlB3VubXV0ZWQTb2VtX3JvaV9yZWFjaF9jb3VudAUxMDk2MBFvZW1faXNfZXhwZXJpbWVudAAMb2VtX3ZpZGVvX2lkEDE0MjcwMjc3NzEzNjAwNDISb2VtX3ZpZGVvX2Fzc2V0X2lkDzg3ODgzMjkxMzc0MDk5NxVvZW1fdmlkZW9fcmVzb3VyY2VfaWQPMzUwMTcyNDcwOTUwMDA3HG9lbV9zb3VyY2VfdmlkZW9fZW5jb2RpbmdfaWQQMTU5MjMxNjA2ODIzODY5Nw52dHNfcmVxdWVzdF9pZAAlAhwAJcQBGweIAXMEODc0NQJjZAoyMDIzLTEyLTA0A3JjYgUxMDkwMANhcHAURmFjZWJvb2sgZm9yIEFuZHJvaWQCY3QZQ09OVEFJTkVEX1BPU1RfQVRUQUNITUVOVBNvcmlnaW5hbF9kdXJhdGlvbl9zBjU1LjU4OQJ0cxVwcm9ncmVzc2l2ZV9lbmNvZGluZ3MA&ccb=1-7&_nc_sid=0f22df&efg=eyJ2ZW5jb2RlX3RhZyI6Im9lcF9oZCJ9&_nc_ohc=hQ1kQEo61QAAX_fYbXp&_nc_ht=video-lis1-1.xx&edm=AGo2L-IEAAAA&oh=00_AfCd6KZeQ4JBJqP1zEaf4c--6kkJIIU7CQUXqfguyAVyLQ&oe=65767794&_nc_rid=410536968248520&_nc_store_type=0&dl=1",
+    "author": "https:\/\/facebook.com\/anbuinfosec"
+}</code></pre>
+</div>
+</div></div>
+            </div>
+          </div>
+
+          <button class="btn btn-sm btn-phoenix-primary mt-3 try-it-out" data-api="facebook" data-method-color="<span class=&quot;token selector&quot;>GET</span>" data-method="get" data-endpoint="api/downloader/facebook" data-decrease-request="1">Try it out</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><div class="col-12 col-md-6 col-xl-4 mb-3">
+  <div class="card shadow-none border border-300 px-1 mx-0">
+    <div class="card-header py-3 position-relative d-flex flex-column justify-content-between">
+      <div class="row g-3" style="flex-direction: column">
+        <div class="col-12 col-md">
+          <h5 class="text-900 mb-0" id="api/downloader/instagram">
+            <span class="token selector">GET</span> api/downloader/instagram&nbsp;&nbsp;
+            <span class="h6 text-900">(<span class="text-warning">0</span> request)</span>
+          </h5>
+          <p class="text-700 mb-0 mt-2">Public instagram video/reels url.</p>
+          <div class="language-url py-1 mt-1 mb-0 scrollbar user-select-all">
+            <code class="language-url">https://anbusec.xyz/api/downloader/instagram?apikey=YOUR_API_KEY_HERE&url=YOUR_PUBLIC_VIDEO_URL</code>
+          </div>
+        </div>
+        <div class="col mt-0">
+          <nav class="nav nav-underline justify-content-end doc-tab-nav align-items-center">
+            <button class="btn btn-link px-2 text-900 copy-code-btn" type="button" data-clipboard-text="https://anbusec.xyz/api/downloader/instagram?apikey=YOUR_API_KEY_HERE&url=YOUR_PUBLIC_VIDEO_URL" data-clipboard-toast="true">
+              <span class="fas fa-copy me-1" aria-hidden="true"></span>Copy Url
+            </button>
+            <a class="btn btn-sm btn-phoenix-primary ms-2 collapsed" data-bs-toggle="collapse" href="#instagram" role="button" aria-expanded="true" aria-controls="instagram">
+              <span class="fas fa-code me-1" aria-hidden="true"></span>Example
+            </a>
+          </nav>
+        </div>
+      </div>
+
+      <div class="row g-3">
+        <div class="card-body p-0">
+          <div class="code-collapse collapse" id="instagram">
+            <ul class="nav nav-underline" role="tablist">
+              <li class="nav-item" role="presentation">
+                <a class="nav-link active" data-bs-toggle="tab" href="#node.jsinstagram" role="tab" aria-selected="false" tabindex="-1">Node.js</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#pythoninstagram" role="tab" aria-selected="false" tabindex="-1">Python</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#phpinstagram" role="tab" aria-selected="false" tabindex="-1">PHP</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#curlinstagram" role="tab" aria-selected="false" tabindex="-1">cURL</a>
+              </li>
+            </ul>
+
+            <div class="tab-content mt-3">
+              <div class="tab-pane fade active show" id="node.jsinstagram" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-javascript" tabindex="0"><code class="language-javascript">const axios = require('axios');
+(async () => {
+  try {
+    const response = await axios({
+      url: 'https://anbusec.xyz/api/downloader/instagram',
+      method: 'GET',
+      params: {
+        'apikey': 'YOUR_API_KEY_HERE',
+        'url': 'YOUR_PUBLIC_VIDEO_URL',
+      }
+    });
+    console.log(response.data);
+  }
+  catch (error) {
+    console.log(error);
+  }
+})();
+</code></pre>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="pythoninstagram" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-python" tabindex="0"><code class="language-python">import requests
+
+url = 'https://anbusec.xyz/api/downloader/instagram'
+querystring = {
+    'apikey': 'YOUR_API_KEY_HERE',
+    'url': 'YOUR_PUBLIC_VIDEO_URL',
+}
+response = requests.request('GET', url, headers=headers, params=querystring)
+print(response.text)
+</code></pre>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="phpinstagram" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-php" tabindex="0"><code class="language-php">$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, 'https://anbusec.xyz/api/downloader/instagram');
+$params['apikey'] = 'YOUR_API_KEY_HERE';
+$params['url'] = 'YOUR_PUBLIC_VIDEO_URL';
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($params));
+$result = curl_exec($ch);
+curl_close($ch);
+echo $result;
+</code></pre>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="curlinstagram" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-curl" tabindex="0"><code class="language-curl">#!/bin/bash
+
+curl -X GET "https://anbusec.xyz/api/downloader/instagram?apikey=YOUR_API_KEY_HERE&url=YOUR_PUBLIC_VIDEO_URL"</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+          <h5 class="mt-2 text-900" data-bs-toggle="collapse" href="#table-request-params-instagram" role="button" aria-expanded="false" aria-controls="table-request-instagram" onclick="toggleCollapse(this)">Request parameters <i class="fa-solid fa-chevron-down text-900 h6"></i> </h5>
+
+          <div class="table-responsive collapse mt-2 scrollbar" id="table-request-params-instagram">
+            <table class="table table-sm border-200 fs--1 mb-0 scrollbar" style="min-width: 476px;">
+              <thead>
+                <tr>
+                  <th class="px-3 align-middle">Name</th>
+                  <th class="px-3 align-middle">Type</th>
+                  <th class="px-3 align-middle">Range</th>
+                  <th class="px-3 align-middle">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr>
+    <td class="px-3 align-middle" style="white-space: nowrap;">apikey<span class="text-danger"> *</span></td>
+    <td class="px-3 align-middle">string</td>
+    <td class="px-3 align-middle">1-10</td>
+    <td class="px-3 align-middle">Your account api key.</td>
+  </tr>	<tr>
+    <td class="px-3 align-middle" style="white-space: nowrap;">url<span class="text-danger"> *</span></td>
+    <td class="px-3 align-middle">string</td>
+    <td class="px-3 align-middle"></td>
+    <td class="px-3 align-middle">Public video url.</td>
+  </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h5 class="mt-3 text-900" data-bs-toggle="collapse" href="#table-response-format-instagram" role="button" aria-expanded="false" aria-controls="table-response-instagram" onclick="toggleCollapse(this)">Response Example <i class="fa-solid fa-chevron-down text-900 h6"></i></h5>
+
+          <div class="scrollbar collapse" id="table-response-format-instagram" style="border: 1px solid rgba(var(--phoenix-300-rgb), var(--phoenix-border-opacity)); border-radius: 0.25rem; overflow: overlay">
+            <ul class="nav nav-underline scrollbar" role="tablist" style="flex-wrap: nowrap; overflow-x: auto; overflow-y: hidden; display: -webkit-box;">
+
+            </ul>
+
+            <div class="table-responsive ">
+              <div class="tab-content mt-2"><div class="mb-1 tab-pane fade active show" id="response-example-instagram" role="tabpanel">
+<div class="">
+<pre class="scrollbar line-numbers language-json" tabindex="0"><code class="language-json">{
+    "status": true,
+    "url": "https:\/\/scontent-waw1-1.cdninstagram.com\/o1\/v\/t16\/f1\/m82\/15456139D736251025F00390F3CB0D8E_video_dashinit.mp4?efg=eyJxZV9ncm91cHMiOiJbXCJpZ193ZWJfZGVsaXZlcnlfdnRzX290ZlwiXSIsInZlbmNvZGVfdGFnIjoidnRzX3ZvZF91cmxnZW4uY2xpcHMuYzIuMTA4MC5iYXNlbGluZSJ9&_nc_ht=scontent-waw1-1.cdninstagram.com&_nc_cat=110&vs=9826414117431977_3564908806&_nc_vs=HBksFQIYT2lnX3hwdl9yZWVsc19wZXJtYW5lbnRfcHJvZC8xNTQ1NjEzOUQ3MzYyNTEwMjVGMDAzOTBGM0NCMEQ4RV92aWRlb19kYXNoaW5pdC5tcDQVAALIAQAVAhg6cGFzc3Rocm91Z2hfZXZlcnN0b3JlL0dDMFF3UlhYWWZYVmNOQUJBSExWdTlCdnpkMUZicV9FQUFBRhUCAsgBACgAGAAbABUAACaqqOfw6ODuPxUCKAJDMywXQDgIcrAgxJwYEmRhc2hfYmFzZWxpbmVfMV92MREAdf4HAA%3D%3D&_nc_rid=7bebe438c2&ccb=9-4&oh=00_AfDTseMO9Djzx_fR38JdZl2DcPr0DqaGa6nLpV4FKWCIZw&oe=65722FAB&_nc_sid=2999b8&dl=1&dl=1",
+    "author": "https:\/\/facebook.com\/anbuinfosec"
+}</code></pre>
+</div>
+</div></div>
+            </div>
+          </div>
+
+          <button class="btn btn-sm btn-phoenix-primary mt-3 try-it-out" data-api="instagram" data-method-color="<span class=&quot;token selector&quot;>GET</span>" data-method="get" data-endpoint="api/downloader/instagram" data-decrease-request="1">Try it out</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><div class="col-12 col-md-6 col-xl-4 mb-3">
+  <div class="card shadow-none border border-300 px-1 mx-0">
+    <div class="card-header py-3 position-relative d-flex flex-column justify-content-between">
+      <div class="row g-3" style="flex-direction: column">
+        <div class="col-12 col-md">
+          <h5 class="text-900 mb-0" id="api/downloader/terabox">
+            <span class="token selector">GET</span> api/downloader/terabox&nbsp;&nbsp;
+            <span class="h6 text-900">(<span class="text-warning">0</span> request)</span>
+          </h5>
+          <p class="text-700 mb-0 mt-2">Terabox link extractor.</p>
+          <div class="language-url py-1 mt-1 mb-0 scrollbar user-select-all">
+            <code class="language-url">https://anbusec.xyz/api/downloader/terabox?apikey=YOUR_API_KEY_HERE&url=YOUR_TERABOX_URL</code>
+          </div>
+        </div>
+        <div class="col mt-0">
+          <nav class="nav nav-underline justify-content-end doc-tab-nav align-items-center">
+            <button class="btn btn-link px-2 text-900 copy-code-btn" type="button" data-clipboard-text="https://anbusec.xyz/api/downloader/terabox?apikey=YOUR_API_KEY_HERE&url=YOUR_TERABOX_URL" data-clipboard-toast="true">
+              <span class="fas fa-copy me-1" aria-hidden="true"></span>Copy Url
+            </button>
+            <a class="btn btn-sm btn-phoenix-primary ms-2 collapsed" data-bs-toggle="collapse" href="#terabox" role="button" aria-expanded="true" aria-controls="terabox">
+              <span class="fas fa-code me-1" aria-hidden="true"></span>Example
+            </a>
+          </nav>
+        </div>
+      </div>
+
+      <div class="row g-3">
+        <div class="card-body p-0">
+          <div class="code-collapse collapse" id="terabox">
+            <ul class="nav nav-underline" role="tablist">
+              <li class="nav-item" role="presentation">
+                <a class="nav-link active" data-bs-toggle="tab" href="#node.jsterabox" role="tab" aria-selected="false" tabindex="-1">Node.js</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#pythonterabox" role="tab" aria-selected="false" tabindex="-1">Python</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#phpterabox" role="tab" aria-selected="false" tabindex="-1">PHP</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#curlterabox" role="tab" aria-selected="false" tabindex="-1">cURL</a>
+              </li>
+            </ul>
+
+            <div class="tab-content mt-3">
+              <div class="tab-pane fade active show" id="node.jsterabox" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-javascript" tabindex="0"><code class="language-javascript">const axios = require('axios');
+(async () => {
+  try {
+    const response = await axios({
+      url: 'https://anbusec.xyz/api/downloader/terabox',
+      method: 'GET',
+      params: {
+        'apikey': 'YOUR_API_KEY_HERE',
+        'url': 'YOUR_TERABOX_URL',
+      }
+    });
+    console.log(response.data);
+  }
+  catch (error) {
+    console.log(error);
+  }
+})();
+</code></pre>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="pythonterabox" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-python" tabindex="0"><code class="language-python">import requests
+
+url = 'https://anbusec.xyz/api/downloader/terabox'
+querystring = {
+    'apikey': 'YOUR_API_KEY_HERE',
+    'url': 'YOUR_TERABOX_URL',
+}
+response = requests.request('GET', url, headers=headers, params=querystring)
+print(response.text)
+</code></pre>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="phpterabox" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-php" tabindex="0"><code class="language-php">$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, 'https://anbusec.xyz/api/downloader/terabox');
+$params['apikey'] = 'YOUR_API_KEY_HERE';
+$params['url'] = 'YOUR_TERABOX_URL';
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($params));
+$result = curl_exec($ch);
+curl_close($ch);
+echo $result;
+</code></pre>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="curlterabox" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-curl" tabindex="0"><code class="language-curl">#!/bin/bash
+
+curl -X GET "https://anbusec.xyz/api/downloader/terabox?apikey=YOUR_API_KEY_HERE&url=YOUR_TERABOX_URL"</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+          <h5 class="mt-2 text-900" data-bs-toggle="collapse" href="#table-request-params-terabox" role="button" aria-expanded="false" aria-controls="table-request-terabox" onclick="toggleCollapse(this)">Request parameters <i class="fa-solid fa-chevron-down text-900 h6"></i> </h5>
+
+          <div class="table-responsive collapse mt-2 scrollbar" id="table-request-params-terabox">
+            <table class="table table-sm border-200 fs--1 mb-0 scrollbar" style="min-width: 476px;">
+              <thead>
+                <tr>
+                  <th class="px-3 align-middle">Name</th>
+                  <th class="px-3 align-middle">Type</th>
+                  <th class="px-3 align-middle">Range</th>
+                  <th class="px-3 align-middle">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr>
+    <td class="px-3 align-middle" style="white-space: nowrap;">apikey<span class="text-danger"> *</span></td>
+    <td class="px-3 align-middle">string</td>
+    <td class="px-3 align-middle">1-10</td>
+    <td class="px-3 align-middle">Your account api key.</td>
+  </tr>	<tr>
+    <td class="px-3 align-middle" style="white-space: nowrap;">url<span class="text-danger"> *</span></td>
+    <td class="px-3 align-middle">string</td>
+    <td class="px-3 align-middle"></td>
+    <td class="px-3 align-middle">Your terabox url.</td>
+  </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h5 class="mt-3 text-900" data-bs-toggle="collapse" href="#table-response-format-terabox" role="button" aria-expanded="false" aria-controls="table-response-terabox" onclick="toggleCollapse(this)">Response Example <i class="fa-solid fa-chevron-down text-900 h6"></i></h5>
+
+          <div class="scrollbar collapse" id="table-response-format-terabox" style="border: 1px solid rgba(var(--phoenix-300-rgb), var(--phoenix-border-opacity)); border-radius: 0.25rem; overflow: overlay">
+            <ul class="nav nav-underline scrollbar" role="tablist" style="flex-wrap: nowrap; overflow-x: auto; overflow-y: hidden; display: -webkit-box;">
+
+            </ul>
+
+            <div class="table-responsive ">
+              <div class="tab-content mt-2"><div class="mb-1 tab-pane fade active show" id="response-example-terabox" role="tabpanel">
+<div class="">
+<pre class="scrollbar line-numbers language-json" tabindex="0"><code class="language-json">{
+    "status": true,
+    "name": "_.jpeg",
+    "creator": "Mits******amizu",
+    "thumbs": {
+        "url1": "https:\/\/data.terabox.com\/thumbnail\/ebf9f137a965b06318e38a97c8003466?fid=4399165511907-250528-19153063087930&time=1701889200&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-bpv2OBWvWGfFk8x9pQbFM4LQv%2F4%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=9041501656562714355&dp-callid=0&size=c140_u90&quality=100&vuk=-&ft=video",
+        "url2": "https:\/\/data.terabox.com\/thumbnail\/ebf9f137a965b06318e38a97c8003466?fid=4399165511907-250528-19153063087930&time=1701889200&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-bpv2OBWvWGfFk8x9pQbFM4LQv%2F4%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=9041501656562714355&dp-callid=0&size=c360_u270&quality=100&vuk=-&ft=video",
+        "url3": "https:\/\/data.terabox.com\/thumbnail\/ebf9f137a965b06318e38a97c8003466?fid=4399165511907-250528-19153063087930&time=1701889200&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-bpv2OBWvWGfFk8x9pQbFM4LQv%2F4%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=9041501656562714355&dp-callid=0&size=c850_u580&quality=100&vuk=-&ft=video",
+        "icon": "https:\/\/data.terabox.com\/thumbnail\/ebf9f137a965b06318e38a97c8003466?fid=4399165511907-250528-19153063087930&time=1701889200&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-bpv2OBWvWGfFk8x9pQbFM4LQv%2F4%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=9041501656562714355&dp-callid=0&size=c60_u60&quality=100&vuk=-&ft=video"
+    },
+    "create_time": "2023-12-04 06:34:47",
+    "size": "53.55 KB",
+    "url": "https:\/\/d.terabox.com\/file\/ebf9f137a965b06318e38a97c8003466?fid=4399165511907-250528-19153063087930&dstime=1701889652&expires=1701890252&rt=sh&chkv=1&sign=FDtERVA-DCb740ccc5511e5e8fedcff06b081203-wkuHn2lr0EyRkkr%2BOW3SDqYPrKE%3D&r=650051647&sharesign=C6VAZaAdR5cEjKwyXWK0zDliE6\/IHIJn7yWf0hoISCqGecmD3z+jGLQcZ5sOrZ4oggyWB5KfAH+z2OoS6I03wLYZAIcm197Ilx90wAuiJVMhPf7oxNWUHPE0Rd8q4PScpqKTbffw6VctdHfUqYyCnLfyAW+YR0FsYZQMu5M3tOXpW95bF7X0akWk6bkVphzH0jNoDQH1Haggt\/iq1dlXP\/afXwggceAJXt3AZwr\/EjMkhyuTPB\/5uUG8lFh97mbs9ZB4d2wi32oInd+31I5FqvOEnYKebApJsbVWpOXjAswIbZEMFf\/meg5HWatQwhRA&sh=1"
+}</code></pre>
+</div>
+</div></div>
+            </div>
+          </div>
+
+          <button class="btn btn-sm btn-phoenix-primary mt-3 try-it-out" data-api="terabox" data-method-color="<span class=&quot;token selector&quot;>GET</span>" data-method="get" data-endpoint="api/downloader/terabox" data-decrease-request="1">Try it out</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><div class="col-12 col-md-6 col-xl-4 mb-3">
+  <div class="card shadow-none border border-300 px-1 mx-0">
+    <div class="card-header py-3 position-relative d-flex flex-column justify-content-between">
+      <div class="row g-3" style="flex-direction: column">
+        <div class="col-12 col-md">
+          <h5 class="text-900 mb-0" id="api/downloader/twitter">
+            <span class="token selector">GET</span> api/downloader/twitter&nbsp;&nbsp;
+            <span class="h6 text-900">(<span class="text-warning">0</span> request)</span>
+          </h5>
+          <p class="text-700 mb-0 mt-2">Download twitter videos.</p>
+          <div class="language-url py-1 mt-1 mb-0 scrollbar user-select-all">
+            <code class="language-url">https://anbusec.xyz/api/downloader/twitter?apikey=YOUR_API_KEY_HERE&url=YOUR_PUBLIC_VIDEO_URL</code>
+          </div>
+        </div>
+        <div class="col mt-0">
+          <nav class="nav nav-underline justify-content-end doc-tab-nav align-items-center">
+            <button class="btn btn-link px-2 text-900 copy-code-btn" type="button" data-clipboard-text="https://anbusec.xyz/api/downloader/twitter?apikey=YOUR_API_KEY_HERE&url=YOUR_PUBLIC_VIDEO_URL" data-clipboard-toast="true">
+              <span class="fas fa-copy me-1" aria-hidden="true"></span>Copy Url
+            </button>
+            <a class="btn btn-sm btn-phoenix-primary ms-2 collapsed" data-bs-toggle="collapse" href="#twitter" role="button" aria-expanded="true" aria-controls="twitter">
+              <span class="fas fa-code me-1" aria-hidden="true"></span>Example
+            </a>
+          </nav>
+        </div>
+      </div>
+
+      <div class="row g-3">
+        <div class="card-body p-0">
+          <div class="code-collapse collapse" id="twitter">
+            <ul class="nav nav-underline" role="tablist">
+              <li class="nav-item" role="presentation">
+                <a class="nav-link active" data-bs-toggle="tab" href="#node.jstwitter" role="tab" aria-selected="false" tabindex="-1">Node.js</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#pythontwitter" role="tab" aria-selected="false" tabindex="-1">Python</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#phptwitter" role="tab" aria-selected="false" tabindex="-1">PHP</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#curltwitter" role="tab" aria-selected="false" tabindex="-1">cURL</a>
+              </li>
+            </ul>
+
+            <div class="tab-content mt-3">
+              <div class="tab-pane fade active show" id="node.jstwitter" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-javascript" tabindex="0"><code class="language-javascript">const axios = require('axios');
+(async () => {
+  try {
+    const response = await axios({
+      url: 'https://anbusec.xyz/api/downloader/twitter',
+      method: 'GET',
+      params: {
+        'apikey': 'YOUR_API_KEY_HERE',
+        'url': 'YOUR_PUBLIC_VIDEO_URL',
+      }
+    });
+    console.log(response.data);
+  }
+  catch (error) {
+    console.log(error);
+  }
+})();
+</code></pre>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="pythontwitter" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-python" tabindex="0"><code class="language-python">import requests
+
+url = 'https://anbusec.xyz/api/downloader/twitter'
+querystring = {
+    'apikey': 'YOUR_API_KEY_HERE',
+    'url': 'YOUR_PUBLIC_VIDEO_URL',
+}
+response = requests.request('GET', url, headers=headers, params=querystring)
+print(response.text)
+</code></pre>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="phptwitter" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-php" tabindex="0"><code class="language-php">$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, 'https://anbusec.xyz/api/downloader/twitter');
+$params['apikey'] = 'YOUR_API_KEY_HERE';
+$params['url'] = 'YOUR_PUBLIC_VIDEO_URL';
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($params));
+$result = curl_exec($ch);
+curl_close($ch);
+echo $result;
+</code></pre>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="curltwitter" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-curl" tabindex="0"><code class="language-curl">#!/bin/bash
+
+curl -X GET "https://anbusec.xyz/api/downloader/twitter?apikey=YOUR_API_KEY_HERE&url=YOUR_PUBLIC_VIDEO_URL"</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+          <h5 class="mt-2 text-900" data-bs-toggle="collapse" href="#table-request-params-twitter" role="button" aria-expanded="false" aria-controls="table-request-twitter" onclick="toggleCollapse(this)">Request parameters <i class="fa-solid fa-chevron-down text-900 h6"></i> </h5>
+
+          <div class="table-responsive collapse mt-2 scrollbar" id="table-request-params-twitter">
+            <table class="table table-sm border-200 fs--1 mb-0 scrollbar" style="min-width: 476px;">
+              <thead>
+                <tr>
+                  <th class="px-3 align-middle">Name</th>
+                  <th class="px-3 align-middle">Type</th>
+                  <th class="px-3 align-middle">Range</th>
+                  <th class="px-3 align-middle">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr>
+    <td class="px-3 align-middle" style="white-space: nowrap;">apikey<span class="text-danger"> *</span></td>
+    <td class="px-3 align-middle">string</td>
+    <td class="px-3 align-middle">1-10</td>
+    <td class="px-3 align-middle">Your account api key.</td>
+  </tr>	<tr>
+    <td class="px-3 align-middle" style="white-space: nowrap;">url<span class="text-danger"> *</span></td>
+    <td class="px-3 align-middle">string</td>
+    <td class="px-3 align-middle"></td>
+    <td class="px-3 align-middle">Your video url.</td>
+  </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h5 class="mt-3 text-900" data-bs-toggle="collapse" href="#table-response-format-twitter" role="button" aria-expanded="false" aria-controls="table-response-twitter" onclick="toggleCollapse(this)">Response Example <i class="fa-solid fa-chevron-down text-900 h6"></i></h5>
+
+          <div class="scrollbar collapse" id="table-response-format-twitter" style="border: 1px solid rgba(var(--phoenix-300-rgb), var(--phoenix-border-opacity)); border-radius: 0.25rem; overflow: overlay">
+            <ul class="nav nav-underline scrollbar" role="tablist" style="flex-wrap: nowrap; overflow-x: auto; overflow-y: hidden; display: -webkit-box;">
+
+            </ul>
+
+            <div class="table-responsive ">
+              <div class="tab-content mt-2"><div class="mb-1 tab-pane fade active show" id="response-example-twitter" role="tabpanel">
+<div class="">
+<pre class="scrollbar line-numbers language-json" tabindex="0"><code class="language-json">{
+    "status": true,
+    "url": "https:\/\/video.twimg.com\/ext_tw_video\/1731856247018901504\/pu\/vid\/avc1\/528x270\/c2x1Z_1OkHCrNKud.mp4?tag=12",
+    "author": "https:\/\/facebook.com\/anbuinfosec"
+}</code></pre>
+</div>
+</div></div>
+            </div>
+          </div>
+
+          <button class="btn btn-sm btn-phoenix-primary mt-3 try-it-out" data-api="twitter" data-method-color="<span class=&quot;token selector&quot;>GET</span>" data-method="get" data-endpoint="api/downloader/twitter" data-decrease-request="1">Try it out</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><div class="col-12 col-md-6 col-xl-4 mb-3">
+  <div class="card shadow-none border border-300 px-1 mx-0">
+    <div class="card-header py-3 position-relative d-flex flex-column justify-content-between">
+      <div class="row g-3" style="flex-direction: column">
+        <div class="col-12 col-md">
+          <h5 class="text-900 mb-0" id="api/downloader/youtube">
+            <span class="token selector">GET</span> api/downloader/youtube&nbsp;&nbsp;
+            <span class="h6 text-900">(<span class="text-warning">0</span> request)</span>
+          </h5>
+          <p class="text-700 mb-0 mt-2">Download youtube public videos and shorts.</p>
+          <div class="language-url py-1 mt-1 mb-0 scrollbar user-select-all">
+            <code class="language-url">https://anbusec.xyz/api/downloader/youtube?apikey=YOUR_API_KEY_HERE&url=YOUR_VIDEO_URL</code>
+          </div>
+        </div>
+        <div class="col mt-0">
+          <nav class="nav nav-underline justify-content-end doc-tab-nav align-items-center">
+            <button class="btn btn-link px-2 text-900 copy-code-btn" type="button" data-clipboard-text="https://anbusec.xyz/api/downloader/youtube?apikey=YOUR_API_KEY_HERE&url=YOUR_VIDEO_URL" data-clipboard-toast="true">
+              <span class="fas fa-copy me-1" aria-hidden="true"></span>Copy Url
+            </button>
+            <a class="btn btn-sm btn-phoenix-primary ms-2 collapsed" data-bs-toggle="collapse" href="#youtube" role="button" aria-expanded="true" aria-controls="youtube">
+              <span class="fas fa-code me-1" aria-hidden="true"></span>Example
+            </a>
+          </nav>
+        </div>
+      </div>
+
+      <div class="row g-3">
+        <div class="card-body p-0">
+          <div class="code-collapse collapse" id="youtube">
+            <ul class="nav nav-underline" role="tablist">
+              <li class="nav-item" role="presentation">
+                <a class="nav-link active" data-bs-toggle="tab" href="#node.jsyoutube" role="tab" aria-selected="false" tabindex="-1">Node.js</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#pythonyoutube" role="tab" aria-selected="false" tabindex="-1">Python</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#phpyoutube" role="tab" aria-selected="false" tabindex="-1">PHP</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#curlyoutube" role="tab" aria-selected="false" tabindex="-1">cURL</a>
+              </li>
+            </ul>
+
+            <div class="tab-content mt-3">
+              <div class="tab-pane fade active show" id="node.jsyoutube" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-javascript" tabindex="0"><code class="language-javascript">const axios = require('axios');
+(async () => {
+  try {
+    const response = await axios({
+      url: 'https://anbusec.xyz/api/downloader/youtube',
+      method: 'GET',
+      params: {
+        'apikey': 'YOUR_API_KEY_HERE',
+        'url': 'YOUR_VIDEO_URL',
+      }
+    });
+    console.log(response.data);
+  }
+  catch (error) {
+    console.log(error);
+  }
+})();
+</code></pre>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="pythonyoutube" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-python" tabindex="0"><code class="language-python">import requests
+
+url = 'https://anbusec.xyz/api/downloader/youtube'
+querystring = {
+    'apikey': 'YOUR_API_KEY_HERE',
+    'url': 'YOUR_VIDEO_URL',
+}
+response = requests.request('GET', url, headers=headers, params=querystring)
+print(response.text)
+</code></pre>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="phpyoutube" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-php" tabindex="0"><code class="language-php">$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, 'https://anbusec.xyz/api/downloader/youtube');
+$params['apikey'] = 'YOUR_API_KEY_HERE';
+$params['url'] = 'YOUR_VIDEO_URL';
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($params));
+$result = curl_exec($ch);
+curl_close($ch);
+echo $result;
+</code></pre>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="curlyoutube" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-curl" tabindex="0"><code class="language-curl">#!/bin/bash
+
+curl -X GET "https://anbusec.xyz/api/downloader/youtube?apikey=YOUR_API_KEY_HERE&url=YOUR_VIDEO_URL"</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+          <h5 class="mt-2 text-900" data-bs-toggle="collapse" href="#table-request-params-youtube" role="button" aria-expanded="false" aria-controls="table-request-youtube" onclick="toggleCollapse(this)">Request parameters <i class="fa-solid fa-chevron-down text-900 h6"></i> </h5>
+
+          <div class="table-responsive collapse mt-2 scrollbar" id="table-request-params-youtube">
+            <table class="table table-sm border-200 fs--1 mb-0 scrollbar" style="min-width: 476px;">
+              <thead>
+                <tr>
+                  <th class="px-3 align-middle">Name</th>
+                  <th class="px-3 align-middle">Type</th>
+                  <th class="px-3 align-middle">Range</th>
+                  <th class="px-3 align-middle">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr>
+    <td class="px-3 align-middle" style="white-space: nowrap;">apikey<span class="text-danger"> *</span></td>
+    <td class="px-3 align-middle">string</td>
+    <td class="px-3 align-middle">1-10</td>
+    <td class="px-3 align-middle">Your account apikey.</td>
+  </tr>	<tr>
+    <td class="px-3 align-middle" style="white-space: nowrap;">url<span class="text-danger"> *</span></td>
+    <td class="px-3 align-middle">string</td>
+    <td class="px-3 align-middle"></td>
+    <td class="px-3 align-middle">YouTube video/shorts url.</td>
+  </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h5 class="mt-3 text-900" data-bs-toggle="collapse" href="#table-response-format-youtube" role="button" aria-expanded="false" aria-controls="table-response-youtube" onclick="toggleCollapse(this)">Response Example <i class="fa-solid fa-chevron-down text-900 h6"></i></h5>
+
+          <div class="scrollbar collapse" id="table-response-format-youtube" style="border: 1px solid rgba(var(--phoenix-300-rgb), var(--phoenix-border-opacity)); border-radius: 0.25rem; overflow: overlay">
+            <ul class="nav nav-underline scrollbar" role="tablist" style="flex-wrap: nowrap; overflow-x: auto; overflow-y: hidden; display: -webkit-box;">
+
+            </ul>
+
+            <div class="table-responsive ">
+              <div class="tab-content mt-2"><div class="mb-1 tab-pane fade active show" id="response-example-youtube" role="tabpanel">
+<div class="">
+<pre class="scrollbar line-numbers language-json" tabindex="0"><code class="language-json">{
+    "status": true,
+    "url": "https:\/\/rr3---sn-qxo7rn7k.googlevideo.com\/videoplayback?expire=1701905125&ei=ha5wZbaKH6Wz2_gPlvWLUA&ip=35.232.64.112&id=o-AOuuoBoJ-BAecGVYb3FS8dsEjMk5QTwiPsN9oucgNnsF&itag=18&source=youtube&requiressl=yes&xpc=EgVo2aDSNQ%3D%3D&mh=9V&mm=31%2C29&mn=sn-qxo7rn7k%2Csn-qxoednee&ms=au%2Crdu&mv=m&mvi=3&pl=18&initcwndbps=1127500&spc=UWF9f7_tyKL0i8-9Txk90Uf0QegPUsuOKp8BFS4gIg&vprv=1&svpuc=1&mime=video%2Fmp4&ns=YaE6YiX6PRzqW6CJ9UzT-koP&cnr=14&ratebypass=yes&dur=180.117&lmt=1672819707317133&mt=1701883033&fvip=2&fexp=24007246&c=WEB&txp=5538434&n=aM6A5Ca7sv1BcgSLgE&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cxpc%2Cspc%2Cvprv%2Csvpuc%2Cmime%2Cns%2Ccnr%2Cratebypass%2Cdur%2Clmt&lsparams=mh%2Cmm%2Cmn%2Cms%2Cmv%2Cmvi%2Cpl%2Cinitcwndbps&lsig=AM8Gb2swRgIhAOTphoabSMb6vQEWKRb5a0rGOAbkDFmpxyseA25_gYkxAiEAicHv4iPIGqfYW3DjOsdzWUvXHinQMP-gT8dxBWCRCoE%3D&sig=ANLwegAwRQIhAIfgWXKGMRu3_hNKZbOZDyDZW5MSKjNKFjgSZHlnypeqAiBwGbTNF60q-66DgYg-MvcrL6MfpC9mYlgid47uKO_kSw%3D%3D&title=gigrei%20pain%20theme%20naruto%20ost%20live%20orchestra",
+    "author": "https:\/\/facebook.com\/anbuinfosec"
+}</code></pre>
+</div>
+</div></div>
+            </div>
+          </div>
+
+          <button class="btn btn-sm btn-phoenix-primary mt-3 try-it-out" data-api="youtube" data-method-color="<span class=&quot;token selector&quot;>GET</span>" data-method="get" data-endpoint="api/downloader/youtube" data-decrease-request="1">Try it out</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></div><div class="row g-3 justify-content-start mt-1 align-items-stretch"><h2 class="mb-4 text-900" id="image" data-anchor="data-anchor">image <a href="#image" class="anchorjs-link" aria-label="Anchor" data-anchorjs-icon="#"></a></h2><div class="col-12 col-md-6 col-xl-4 mb-3">
+  <div class="card shadow-none border border-300 px-1 mx-0">
+    <div class="card-header py-3 position-relative d-flex flex-column justify-content-between">
+      <div class="row g-3" style="flex-direction: column">
+        <div class="col-12 col-md">
+          <h5 class="text-900 mb-0" id="api/image/screenshot">
+            <span class="token selector">GET</span> api/image/screenshot&nbsp;&nbsp;
+            <span class="h6 text-900">(<span class="text-warning">0</span> request)</span>
+          </h5>
+          <p class="text-700 mb-0 mt-2">Take screenshot from any url or get results from google.</p>
+          <div class="language-url py-1 mt-1 mb-0 scrollbar user-select-all">
+            <code class="language-url">https://anbusec.xyz/api/image/screenshot?apikey=YOUR_API_KEY_HERE&q=YOUR_URL/TEXT</code>
+          </div>
+        </div>
+        <div class="col mt-0">
+          <nav class="nav nav-underline justify-content-end doc-tab-nav align-items-center">
+            <button class="btn btn-link px-2 text-900 copy-code-btn" type="button" data-clipboard-text="https://anbusec.xyz/api/image/screenshot?apikey=YOUR_API_KEY_HERE&q=YOUR_URL/TEXT" data-clipboard-toast="true">
+              <span class="fas fa-copy me-1" aria-hidden="true"></span>Copy Url
+            </button>
+            <a class="btn btn-sm btn-phoenix-primary ms-2 collapsed" data-bs-toggle="collapse" href="#screenshot" role="button" aria-expanded="true" aria-controls="screenshot">
+              <span class="fas fa-code me-1" aria-hidden="true"></span>Example
+            </a>
+          </nav>
+        </div>
+      </div>
+
+      <div class="row g-3">
+        <div class="card-body p-0">
+          <div class="code-collapse collapse" id="screenshot">
+            <ul class="nav nav-underline" role="tablist">
+              <li class="nav-item" role="presentation">
+                <a class="nav-link active" data-bs-toggle="tab" href="#node.jsscreenshot" role="tab" aria-selected="false" tabindex="-1">Node.js</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#pythonscreenshot" role="tab" aria-selected="false" tabindex="-1">Python</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#phpscreenshot" role="tab" aria-selected="false" tabindex="-1">PHP</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#curlscreenshot" role="tab" aria-selected="false" tabindex="-1">cURL</a>
+              </li>
+            </ul>
+
+            <div class="tab-content mt-3">
+              <div class="tab-pane fade active show" id="node.jsscreenshot" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-javascript" tabindex="0"><code class="language-javascript">const axios = require('axios');
+(async () => {
+  try {
+    const response = await axios({
+      url: 'https://anbusec.xyz/api/image/screenshot',
+      method: 'GET',
+      params: {
+        'apikey': 'YOUR_API_KEY_HERE',
+        'q': 'YOUR_URL/TEXT',
+      }
+    });
+    console.log(response.data);
+  }
+  catch (error) {
+    console.log(error);
+  }
+})();
+</code></pre>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="pythonscreenshot" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-python" tabindex="0"><code class="language-python">import requests
+
+url = 'https://anbusec.xyz/api/image/screenshot'
+querystring = {
+    'apikey': 'YOUR_API_KEY_HERE',
+    'q': 'YOUR_URL/TEXT',
+}
+response = requests.request('GET', url, headers=headers, params=querystring)
+print(response.text)
+</code></pre>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="phpscreenshot" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-php" tabindex="0"><code class="language-php">$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, 'https://anbusec.xyz/api/image/screenshot');
+$params['apikey'] = 'YOUR_API_KEY_HERE';
+$params['q'] = 'YOUR_URL%2FTEXT';
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($params));
+$result = curl_exec($ch);
+curl_close($ch);
+echo $result;
+</code></pre>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="curlscreenshot" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-curl" tabindex="0"><code class="language-curl">#!/bin/bash
+
+curl -X GET "https://anbusec.xyz/api/image/screenshot?apikey=YOUR_API_KEY_HERE&q=YOUR_URL%2FTEXT"</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+          <h5 class="mt-2 text-900" data-bs-toggle="collapse" href="#table-request-params-screenshot" role="button" aria-expanded="false" aria-controls="table-request-screenshot" onclick="toggleCollapse(this)">Request parameters <i class="fa-solid fa-chevron-down text-900 h6"></i> </h5>
+
+          <div class="table-responsive collapse mt-2 scrollbar" id="table-request-params-screenshot">
+            <table class="table table-sm border-200 fs--1 mb-0 scrollbar" style="min-width: 476px;">
+              <thead>
+                <tr>
+                  <th class="px-3 align-middle">Name</th>
+                  <th class="px-3 align-middle">Type</th>
+                  <th class="px-3 align-middle">Range</th>
+                  <th class="px-3 align-middle">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr>
+    <td class="px-3 align-middle" style="white-space: nowrap;">apikey<span class="text-danger"> *</span></td>
+    <td class="px-3 align-middle">string</td>
+    <td class="px-3 align-middle">1-10</td>
+    <td class="px-3 align-middle">Your account apikey.</td>
+  </tr>	<tr>
+    <td class="px-3 align-middle" style="white-space: nowrap;">q<span class="text-danger"> *</span></td>
+    <td class="px-3 align-middle">string</td>
+    <td class="px-3 align-middle"></td>
+    <td class="px-3 align-middle">Your url or search text.</td>
+  </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h5 class="mt-3 text-900" data-bs-toggle="collapse" href="#table-response-format-screenshot" role="button" aria-expanded="false" aria-controls="table-response-screenshot" onclick="toggleCollapse(this)">Response Example <i class="fa-solid fa-chevron-down text-900 h6"></i></h5>
+
+          <div class="scrollbar collapse" id="table-response-format-screenshot" style="border: 1px solid rgba(var(--phoenix-300-rgb), var(--phoenix-border-opacity)); border-radius: 0.25rem; overflow: overlay">
+            <ul class="nav nav-underline scrollbar" role="tablist" style="flex-wrap: nowrap; overflow-x: auto; overflow-y: hidden; display: -webkit-box;">
+
+            </ul>
+
+            <div class="table-responsive ">
+              <div class="tab-content mt-2"><div class="mb-1 tab-pane fade show active" id="response-format-screenshot" role="tabpanel">
+  <div class="d-flex justify-content-center">
+    <div class="card mb-1" style="max-width:20rem;">
+      <img class="card-img-top" src="" alt="">
+
+    </div>
+  </div>
+</div></div>
+            </div>
+          </div>
+
+          <button class="btn btn-sm btn-phoenix-primary mt-3 try-it-out" data-api="screenshot" data-method-color="<span class=&quot;token selector&quot;>GET</span>" data-method="get" data-endpoint="api/image/screenshot" data-decrease-request="1">Try it out</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></div><div class="row g-3 justify-content-start mt-1 align-items-stretch"><h2 class="mb-4 text-900" id="sports" data-anchor="data-anchor">sports <a href="#sports" class="anchorjs-link" aria-label="Anchor" data-anchorjs-icon="#"></a></h2><div class="col-12 col-md-6 col-xl-4 mb-3">
+  <div class="card shadow-none border border-300 px-1 mx-0">
+    <div class="card-header py-3 position-relative d-flex flex-column justify-content-between">
+      <div class="row g-3" style="flex-direction: column">
+        <div class="col-12 col-md">
+          <h5 class="text-900 mb-0" id="api/sports/match">
+            <span class="token selector">GET</span> api/sports/match&nbsp;&nbsp;
+            <span class="h6 text-900">(<span class="text-warning">0</span> request)</span>
+          </h5>
+          <p class="text-700 mb-0 mt-2">Get match list.</p>
+          <div class="language-url py-1 mt-1 mb-0 scrollbar user-select-all">
+            <code class="language-url">https://anbusec.xyz/api/sports/match?apikey=YOUR_API_KEY_HERE</code>
+          </div>
+        </div>
+        <div class="col mt-0">
+          <nav class="nav nav-underline justify-content-end doc-tab-nav align-items-center">
+            <button class="btn btn-link px-2 text-900 copy-code-btn" type="button" data-clipboard-text="https://anbusec.xyz/api/sports/match?apikey=YOUR_API_KEY_HERE" data-clipboard-toast="true">
+              <span class="fas fa-copy me-1" aria-hidden="true"></span>Copy Url
+            </button>
+            <a class="btn btn-sm btn-phoenix-primary ms-2 collapsed" data-bs-toggle="collapse" href="#match" role="button" aria-expanded="true" aria-controls="match">
+              <span class="fas fa-code me-1" aria-hidden="true"></span>Example
+            </a>
+          </nav>
+        </div>
+      </div>
+
+      <div class="row g-3">
+        <div class="card-body p-0">
+          <div class="code-collapse collapse" id="match">
+            <ul class="nav nav-underline" role="tablist">
+              <li class="nav-item" role="presentation">
+                <a class="nav-link active" data-bs-toggle="tab" href="#node.jsmatch" role="tab" aria-selected="false" tabindex="-1">Node.js</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#pythonmatch" role="tab" aria-selected="false" tabindex="-1">Python</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#phpmatch" role="tab" aria-selected="false" tabindex="-1">PHP</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#curlmatch" role="tab" aria-selected="false" tabindex="-1">cURL</a>
+              </li>
+            </ul>
+
+            <div class="tab-content mt-3">
+              <div class="tab-pane fade active show" id="node.jsmatch" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-javascript" tabindex="0"><code class="language-javascript">const axios = require('axios');
+(async () => {
+  try {
+    const response = await axios({
+      url: 'https://anbusec.xyz/api/sports/match',
+      method: 'GET',
+      params: {
+        'apikey': 'YOUR_API_KEY_HERE',
+      }
+    });
+    console.log(response.data);
+  }
+  catch (error) {
+    console.log(error);
+  }
+})();
+</code></pre>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="pythonmatch" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-python" tabindex="0"><code class="language-python">import requests
+
+url = 'https://anbusec.xyz/api/sports/match'
+querystring = {
+    'apikey': 'YOUR_API_KEY_HERE',
+}
+response = requests.request('GET', url, headers=headers, params=querystring)
+print(response.text)
+</code></pre>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="phpmatch" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-php" tabindex="0"><code class="language-php">$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, 'https://anbusec.xyz/api/sports/match');
+$params['apikey'] = 'YOUR_API_KEY_HERE';
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($params));
+$result = curl_exec($ch);
+curl_close($ch);
+echo $result;
+</code></pre>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="curlmatch" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-curl" tabindex="0"><code class="language-curl">#!/bin/bash
+
+curl -X GET "https://anbusec.xyz/api/sports/match?apikey=YOUR_API_KEY_HERE"</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+          <h5 class="mt-2 text-900" data-bs-toggle="collapse" href="#table-request-params-match" role="button" aria-expanded="false" aria-controls="table-request-match" onclick="toggleCollapse(this)">Request parameters <i class="fa-solid fa-chevron-down text-900 h6"></i> </h5>
+
+          <div class="table-responsive collapse mt-2 scrollbar" id="table-request-params-match">
+            <table class="table table-sm border-200 fs--1 mb-0 scrollbar" style="min-width: 476px;">
+              <thead>
+                <tr>
+                  <th class="px-3 align-middle">Name</th>
+                  <th class="px-3 align-middle">Type</th>
+                  <th class="px-3 align-middle">Range</th>
+                  <th class="px-3 align-middle">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr>
+    <td class="px-3 align-middle" style="white-space: nowrap;">apikey<span class="text-danger"> *</span></td>
+    <td class="px-3 align-middle">string</td>
+    <td class="px-3 align-middle">1-10</td>
+    <td class="px-3 align-middle">Your account api key.</td>
+  </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h5 class="mt-3 text-900" data-bs-toggle="collapse" href="#table-response-format-match" role="button" aria-expanded="false" aria-controls="table-response-match" onclick="toggleCollapse(this)">Response Example <i class="fa-solid fa-chevron-down text-900 h6"></i></h5>
+
+          <div class="scrollbar collapse" id="table-response-format-match" style="border: 1px solid rgba(var(--phoenix-300-rgb), var(--phoenix-border-opacity)); border-radius: 0.25rem; overflow: overlay">
+            <ul class="nav nav-underline scrollbar" role="tablist" style="flex-wrap: nowrap; overflow-x: auto; overflow-y: hidden; display: -webkit-box;">
+
+            </ul>
+
+            <div class="table-responsive ">
+              <div class="tab-content mt-2"><div class="mb-1 tab-pane fade active show" id="response-example-match" role="tabpanel">
+<div class="">
+<pre class="scrollbar line-numbers language-json" tabindex="0"><code class="language-json">{
+    "status": true,
+    "data": [
+        {
+            "name": "WI vs ENG",
+            "status": "null",
+            "url": "https:\/\/m.cricbuzz.com\/cricket-commentary\/69760\/wi-vs-eng-2nd-odi-england-tour-of-west-indies-2023"
+        },
+        {
+            "name": "ENGW vs INDW",
+            "status": "finished",
+            "url": "https:\/\/m.cricbuzz.com\/cricket-commentary\/82689\/engw-vs-indw-1st-t20i-england-women-tour-of-india-2023"
+        },
+        {
+            "name": "DBL vs NW",
+            "status": "null",
+            "url": "https:\/\/m.cricbuzz.com\/cricket-commentary\/84093\/nw-vs-dbl-25th-match-t10-league-2023"
+        },
+        {
+            "name": "NZ vs BAN",
+            "status": "null",
+            "url": "https:\/\/m.cricbuzz.com\/cricket-commentary\/73876\/ban-vs-nz-2nd-test-new-zealand-tour-of-bangladesh-2023"
+        },
+        {
+            "name": "INDCAP vs GGT",
+            "status": "finished",
+            "url": "https:\/\/m.cricbuzz.com\/cricket-commentary\/82672\/indcap-vs-ggt-eliminator-legends-league-cricket-2023"
+        },
+        {
+            "name": "Melbourne Stars vs Brisbane Heat",
+            "status": "upcoming",
+            "url": "https:\/\/m.cricbuzz.com\/cricket-commentary\/76682\/brh-vs-mls-1st-match-big-bash-league-2023-24"
+        },
+        {
+            "name": "Melbourne Stars vs Brisbane Heat",
+            "status": "null",
+            "url": "https:\/\/m.cricbuzz.com\/cricket-commentary\/76682\/brh-vs-mls-1st-match-big-bash-league-2023-24"
+        },
+        {
+            "name": "Melbourne Stars vs Brisbane Heat",
+            "status": "null",
+            "url": "https:\/\/m.cricbuzz.com\/cricket-commentary\/76682\/brh-vs-mls-1st-match-big-bash-league-2023-24"
+        }
+    ]
+}</code></pre>
+</div>
+</div></div>
+            </div>
+          </div>
+
+          <button class="btn btn-sm btn-phoenix-primary mt-3 try-it-out" data-api="match" data-method-color="<span class=&quot;token selector&quot;>GET</span>" data-method="get" data-endpoint="api/sports/match" data-decrease-request="1">Try it out</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><div class="col-12 col-md-6 col-xl-4 mb-3">
+  <div class="card shadow-none border border-300 px-1 mx-0">
+    <div class="card-header py-3 position-relative d-flex flex-column justify-content-between">
+      <div class="row g-3" style="flex-direction: column">
+        <div class="col-12 col-md">
+          <h5 class="text-900 mb-0" id="api/sports/score">
+            <span class="token selector">GET</span> api/sports/score&nbsp;&nbsp;
+            <span class="h6 text-900">(<span class="text-warning">0</span> request)</span>
+          </h5>
+          <p class="text-700 mb-0 mt-2">Get match live score.</p>
+          <div class="language-url py-1 mt-1 mb-0 scrollbar user-select-all">
+            <code class="language-url">https://anbusec.xyz/api/sports/score?apikey=YOUR_API_KEY_HERE&url=MATCH_URL_HERE</code>
+          </div>
+        </div>
+        <div class="col mt-0">
+          <nav class="nav nav-underline justify-content-end doc-tab-nav align-items-center">
+            <button class="btn btn-link px-2 text-900 copy-code-btn" type="button" data-clipboard-text="https://anbusec.xyz/api/sports/score?apikey=YOUR_API_KEY_HERE&url=MATCH_URL_HERE" data-clipboard-toast="true">
+              <span class="fas fa-copy me-1" aria-hidden="true"></span>Copy Url
+            </button>
+            <a class="btn btn-sm btn-phoenix-primary ms-2 collapsed" data-bs-toggle="collapse" href="#score" role="button" aria-expanded="true" aria-controls="score">
+              <span class="fas fa-code me-1" aria-hidden="true"></span>Example
+            </a>
+          </nav>
+        </div>
+      </div>
+
+      <div class="row g-3">
+        <div class="card-body p-0">
+          <div class="code-collapse collapse" id="score">
+            <ul class="nav nav-underline" role="tablist">
+              <li class="nav-item" role="presentation">
+                <a class="nav-link active" data-bs-toggle="tab" href="#node.jsscore" role="tab" aria-selected="false" tabindex="-1">Node.js</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#pythonscore" role="tab" aria-selected="false" tabindex="-1">Python</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#phpscore" role="tab" aria-selected="false" tabindex="-1">PHP</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#curlscore" role="tab" aria-selected="false" tabindex="-1">cURL</a>
+              </li>
+            </ul>
+
+            <div class="tab-content mt-3">
+              <div class="tab-pane fade active show" id="node.jsscore" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-javascript" tabindex="0"><code class="language-javascript">const axios = require('axios');
+(async () => {
+  try {
+    const response = await axios({
+      url: 'https://anbusec.xyz/api/sports/score',
+      method: 'GET',
+      params: {
+        'apikey': 'YOUR_API_KEY_HERE',
+        'url': 'MATCH_URL_HERE',
+      }
+    });
+    console.log(response.data);
+  }
+  catch (error) {
+    console.log(error);
+  }
+})();
+</code></pre>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="pythonscore" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-python" tabindex="0"><code class="language-python">import requests
+
+url = 'https://anbusec.xyz/api/sports/score'
+querystring = {
+    'apikey': 'YOUR_API_KEY_HERE',
+    'url': 'MATCH_URL_HERE',
+}
+response = requests.request('GET', url, headers=headers, params=querystring)
+print(response.text)
+</code></pre>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="phpscore" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-php" tabindex="0"><code class="language-php">$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, 'https://anbusec.xyz/api/sports/score');
+$params['apikey'] = 'YOUR_API_KEY_HERE';
+$params['url'] = 'MATCH_URL_HERE';
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($params));
+$result = curl_exec($ch);
+curl_close($ch);
+echo $result;
+</code></pre>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="curlscore" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-curl" tabindex="0"><code class="language-curl">#!/bin/bash
+
+curl -X GET "https://anbusec.xyz/api/sports/score?apikey=YOUR_API_KEY_HERE&url=MATCH_URL_HERE"</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+          <h5 class="mt-2 text-900" data-bs-toggle="collapse" href="#table-request-params-score" role="button" aria-expanded="false" aria-controls="table-request-score" onclick="toggleCollapse(this)">Request parameters <i class="fa-solid fa-chevron-down text-900 h6"></i> </h5>
+
+          <div class="table-responsive collapse mt-2 scrollbar" id="table-request-params-score">
+            <table class="table table-sm border-200 fs--1 mb-0 scrollbar" style="min-width: 476px;">
+              <thead>
+                <tr>
+                  <th class="px-3 align-middle">Name</th>
+                  <th class="px-3 align-middle">Type</th>
+                  <th class="px-3 align-middle">Range</th>
+                  <th class="px-3 align-middle">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr>
+    <td class="px-3 align-middle" style="white-space: nowrap;">apikey<span class="text-danger"> *</span></td>
+    <td class="px-3 align-middle">string</td>
+    <td class="px-3 align-middle">1-10</td>
+    <td class="px-3 align-middle">Your account apikey.</td>
+  </tr>	<tr>
+    <td class="px-3 align-middle" style="white-space: nowrap;">url<span class="text-danger"> *</span></td>
+    <td class="px-3 align-middle">string</td>
+    <td class="px-3 align-middle"></td>
+    <td class="px-3 align-middle">Match url here.</td>
+  </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h5 class="mt-3 text-900" data-bs-toggle="collapse" href="#table-response-format-score" role="button" aria-expanded="false" aria-controls="table-response-score" onclick="toggleCollapse(this)">Response Example <i class="fa-solid fa-chevron-down text-900 h6"></i></h5>
+
+          <div class="scrollbar collapse" id="table-response-format-score" style="border: 1px solid rgba(var(--phoenix-300-rgb), var(--phoenix-border-opacity)); border-radius: 0.25rem; overflow: overlay">
+            <ul class="nav nav-underline scrollbar" role="tablist" style="flex-wrap: nowrap; overflow-x: auto; overflow-y: hidden; display: -webkit-box;">
+
+            </ul>
+
+            <div class="table-responsive ">
+              <div class="tab-content mt-2"><div class="mb-1 tab-pane fade active show" id="response-example-score" role="tabpanel">
+<div class="">
+<pre class="scrollbar line-numbers language-json" tabindex="0"><code class="language-json">{
+    "status": true,
+    "title": "India Women vs England Women, 1st T20I",
+    "game": "finished",
+    "gameStatus": "England Women won by 38 runs",
+    "targetscore": "N\/A",
+    "miniscore": "N\/A",
+    "crr": "7.95",
+    "rr": "N\/A",
+    "battingData": [],
+    "bowlingData": [],
+    "partnership": "N\/A",
+    "recentBalls": "N\/A",
+    "lastWkt": "N\/A"
+}</code></pre>
+</div>
+</div></div>
+            </div>
+          </div>
+
+          <button class="btn btn-sm btn-phoenix-primary mt-3 try-it-out" data-api="score" data-method-color="<span class=&quot;token selector&quot;>GET</span>" data-method="get" data-endpoint="api/sports/score" data-decrease-request="1">Try it out</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></div><div class="row g-3 justify-content-start mt-1 align-items-stretch"><h2 class="mb-4 text-900" id="tools" data-anchor="data-anchor">tools <a href="#tools" class="anchorjs-link" aria-label="Anchor" data-anchorjs-icon="#"></a></h2><div class="col-12 col-md-6 col-xl-4 mb-3">
+  <div class="card shadow-none border border-300 px-1 mx-0">
+    <div class="card-header py-3 position-relative d-flex flex-column justify-content-between">
+      <div class="row g-3" style="flex-direction: column">
+        <div class="col-12 col-md">
+          <h5 class="text-900 mb-0" id="api/tools/bin">
+            <span class="token selector">GET</span> api/tools/bin&nbsp;&nbsp;
+            <span class="h6 text-900">(<span class="text-warning">0</span> request)</span>
+          </h5>
+          <p class="text-700 mb-0 mt-2">Get information from bin.</p>
+          <div class="language-url py-1 mt-1 mb-0 scrollbar user-select-all">
+            <code class="language-url">https://anbusec.xyz/api/tools/bin?apikey=YOUR_API_KEY_HERE&bin=YOUR_6_DIGIT_BIN</code>
+          </div>
+        </div>
+        <div class="col mt-0">
+          <nav class="nav nav-underline justify-content-end doc-tab-nav align-items-center">
+            <button class="btn btn-link px-2 text-900 copy-code-btn" type="button" data-clipboard-text="https://anbusec.xyz/api/tools/bin?apikey=YOUR_API_KEY_HERE&bin=YOUR_6_DIGIT_BIN" data-clipboard-toast="true">
+              <span class="fas fa-copy me-1" aria-hidden="true"></span>Copy Url
+            </button>
+            <a class="btn btn-sm btn-phoenix-primary ms-2 collapsed" data-bs-toggle="collapse" href="#bin" role="button" aria-expanded="true" aria-controls="bin">
+              <span class="fas fa-code me-1" aria-hidden="true"></span>Example
+            </a>
+          </nav>
+        </div>
+      </div>
+
+      <div class="row g-3">
+        <div class="card-body p-0">
+          <div class="code-collapse collapse" id="bin">
+            <ul class="nav nav-underline" role="tablist">
+              <li class="nav-item" role="presentation">
+                <a class="nav-link active" data-bs-toggle="tab" href="#node.jsbin" role="tab" aria-selected="false" tabindex="-1">Node.js</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#pythonbin" role="tab" aria-selected="false" tabindex="-1">Python</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#phpbin" role="tab" aria-selected="false" tabindex="-1">PHP</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#curlbin" role="tab" aria-selected="false" tabindex="-1">cURL</a>
+              </li>
+            </ul>
+
+            <div class="tab-content mt-3">
+              <div class="tab-pane fade active show" id="node.jsbin" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-javascript" tabindex="0"><code class="language-javascript">const axios = require('axios');
+(async () => {
+  try {
+    const response = await axios({
+      url: 'https://anbusec.xyz/api/tools/bin',
+      method: 'GET',
+      params: {
+        'apikey': 'YOUR_API_KEY_HERE',
+        'bin': 'YOUR_6_DIGIT_BIN',
+      }
+    });
+    console.log(response.data);
+  }
+  catch (error) {
+    console.log(error);
+  }
+})();
+</code></pre>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="pythonbin" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-python" tabindex="0"><code class="language-python">import requests
+
+url = 'https://anbusec.xyz/api/tools/bin'
+querystring = {
+    'apikey': 'YOUR_API_KEY_HERE',
+    'bin': 'YOUR_6_DIGIT_BIN',
+}
+response = requests.request('GET', url, headers=headers, params=querystring)
+print(response.text)
+</code></pre>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="phpbin" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-php" tabindex="0"><code class="language-php">$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, 'https://anbusec.xyz/api/tools/bin');
+$params['apikey'] = 'YOUR_API_KEY_HERE';
+$params['bin'] = 'YOUR_6_DIGIT_BIN';
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($params));
+$result = curl_exec($ch);
+curl_close($ch);
+echo $result;
+</code></pre>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="curlbin" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-curl" tabindex="0"><code class="language-curl">#!/bin/bash
+
+curl -X GET "https://anbusec.xyz/api/tools/bin?apikey=YOUR_API_KEY_HERE&bin=YOUR_6_DIGIT_BIN"</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+          <h5 class="mt-2 text-900" data-bs-toggle="collapse" href="#table-request-params-bin" role="button" aria-expanded="false" aria-controls="table-request-bin" onclick="toggleCollapse(this)">Request parameters <i class="fa-solid fa-chevron-down text-900 h6"></i> </h5>
+
+          <div class="table-responsive collapse mt-2 scrollbar" id="table-request-params-bin">
+            <table class="table table-sm border-200 fs--1 mb-0 scrollbar" style="min-width: 476px;">
+              <thead>
+                <tr>
+                  <th class="px-3 align-middle">Name</th>
+                  <th class="px-3 align-middle">Type</th>
+                  <th class="px-3 align-middle">Range</th>
+                  <th class="px-3 align-middle">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr>
+    <td class="px-3 align-middle" style="white-space: nowrap;">apikey<span class="text-danger"> *</span></td>
+    <td class="px-3 align-middle">string</td>
+    <td class="px-3 align-middle">1-10</td>
+    <td class="px-3 align-middle">Your account api key.</td>
+  </tr>	<tr>
+    <td class="px-3 align-middle" style="white-space: nowrap;">bin<span class="text-danger"> *</span></td>
+    <td class="px-3 align-middle">string</td>
+    <td class="px-3 align-middle"></td>
+    <td class="px-3 align-middle">Your six digit bin.</td>
+  </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h5 class="mt-3 text-900" data-bs-toggle="collapse" href="#table-response-format-bin" role="button" aria-expanded="false" aria-controls="table-response-bin" onclick="toggleCollapse(this)">Response Example <i class="fa-solid fa-chevron-down text-900 h6"></i></h5>
+
+          <div class="scrollbar collapse" id="table-response-format-bin" style="border: 1px solid rgba(var(--phoenix-300-rgb), var(--phoenix-border-opacity)); border-radius: 0.25rem; overflow: overlay">
+            <ul class="nav nav-underline scrollbar" role="tablist" style="flex-wrap: nowrap; overflow-x: auto; overflow-y: hidden; display: -webkit-box;">
+
+            </ul>
+
+            <div class="table-responsive ">
+              <div class="tab-content mt-2"><div class="mb-1 tab-pane fade active show" id="response-example-bin" role="tabpanel">
+<div class="">
+<pre class="scrollbar line-numbers language-json" tabindex="0"><code class="language-json">{
+    "status": true,
+    "bin": "******",
+    "brand": "DISCOVER",
+    "type": "CREDIT",
+    "level": "PERSONAL",
+    "bankName": "DISCOVER BANK",
+    "bankPhone": "------",
+    "isoCountryName": "UNITED STATES",
+    "countryCodeA2": "US",
+    "countryCodeA3": "USA",
+    "currency": "USD"
+}</code></pre>
+</div>
+</div></div>
+            </div>
+          </div>
+
+          <button class="btn btn-sm btn-phoenix-primary mt-3 try-it-out" data-api="bin" data-method-color="<span class=&quot;token selector&quot;>GET</span>" data-method="get" data-endpoint="api/tools/bin" data-decrease-request="1">Try it out</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><div class="col-12 col-md-6 col-xl-4 mb-3">
+  <div class="card shadow-none border border-300 px-1 mx-0">
+    <div class="card-header py-3 position-relative d-flex flex-column justify-content-between">
+      <div class="row g-3" style="flex-direction: column">
+        <div class="col-12 col-md">
+          <h5 class="text-900 mb-0" id="api/tools/device">
+            <span class="token selector">GET</span> api/tools/device&nbsp;&nbsp;
+            <span class="h6 text-900">(<span class="text-warning">0</span> request)</span>
+          </h5>
+          <p class="text-700 mb-0 mt-2">Get android device full details.</p>
+          <div class="language-url py-1 mt-1 mb-0 scrollbar user-select-all">
+            <code class="language-url">https://anbusec.xyz/api/tools/device?apikey=YOUR_API_KEY_HERE&search=DEVICE_NAME</code>
+          </div>
+        </div>
+        <div class="col mt-0">
+          <nav class="nav nav-underline justify-content-end doc-tab-nav align-items-center">
+            <button class="btn btn-link px-2 text-900 copy-code-btn" type="button" data-clipboard-text="https://anbusec.xyz/api/tools/device?apikey=YOUR_API_KEY_HERE&search=DEVICE_NAME" data-clipboard-toast="true">
+              <span class="fas fa-copy me-1" aria-hidden="true"></span>Copy Url
+            </button>
+            <a class="btn btn-sm btn-phoenix-primary ms-2 collapsed" data-bs-toggle="collapse" href="#device" role="button" aria-expanded="true" aria-controls="device">
+              <span class="fas fa-code me-1" aria-hidden="true"></span>Example
+            </a>
+          </nav>
+        </div>
+      </div>
+
+      <div class="row g-3">
+        <div class="card-body p-0">
+          <div class="code-collapse collapse" id="device">
+            <ul class="nav nav-underline" role="tablist">
+              <li class="nav-item" role="presentation">
+                <a class="nav-link active" data-bs-toggle="tab" href="#node.jsdevice" role="tab" aria-selected="false" tabindex="-1">Node.js</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#pythondevice" role="tab" aria-selected="false" tabindex="-1">Python</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#phpdevice" role="tab" aria-selected="false" tabindex="-1">PHP</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#curldevice" role="tab" aria-selected="false" tabindex="-1">cURL</a>
+              </li>
+            </ul>
+
+            <div class="tab-content mt-3">
+              <div class="tab-pane fade active show" id="node.jsdevice" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-javascript" tabindex="0"><code class="language-javascript">const axios = require('axios');
+(async () => {
+  try {
+    const response = await axios({
+      url: 'https://anbusec.xyz/api/tools/device',
+      method: 'GET',
+      params: {
+        'apikey': 'YOUR_API_KEY_HERE',
+        'search': 'DEVICE_NAME',
+      }
+    });
+    console.log(response.data);
+  }
+  catch (error) {
+    console.log(error);
+  }
+})();
+</code></pre>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="pythondevice" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-python" tabindex="0"><code class="language-python">import requests
+
+url = 'https://anbusec.xyz/api/tools/device'
+querystring = {
+    'apikey': 'YOUR_API_KEY_HERE',
+    'search': 'DEVICE_NAME',
+}
+response = requests.request('GET', url, headers=headers, params=querystring)
+print(response.text)
+</code></pre>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="phpdevice" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-php" tabindex="0"><code class="language-php">$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, 'https://anbusec.xyz/api/tools/device');
+$params['apikey'] = 'YOUR_API_KEY_HERE';
+$params['search'] = 'DEVICE_NAME';
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($params));
+$result = curl_exec($ch);
+curl_close($ch);
+echo $result;
+</code></pre>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="curldevice" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-curl" tabindex="0"><code class="language-curl">#!/bin/bash
+
+curl -X GET "https://anbusec.xyz/api/tools/device?apikey=YOUR_API_KEY_HERE&search=DEVICE_NAME"</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+          <h5 class="mt-2 text-900" data-bs-toggle="collapse" href="#table-request-params-device" role="button" aria-expanded="false" aria-controls="table-request-device" onclick="toggleCollapse(this)">Request parameters <i class="fa-solid fa-chevron-down text-900 h6"></i> </h5>
+
+          <div class="table-responsive collapse mt-2 scrollbar" id="table-request-params-device">
+            <table class="table table-sm border-200 fs--1 mb-0 scrollbar" style="min-width: 476px;">
+              <thead>
+                <tr>
+                  <th class="px-3 align-middle">Name</th>
+                  <th class="px-3 align-middle">Type</th>
+                  <th class="px-3 align-middle">Range</th>
+                  <th class="px-3 align-middle">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr>
+    <td class="px-3 align-middle" style="white-space: nowrap;">apikey<span class="text-danger"> *</span></td>
+    <td class="px-3 align-middle">string</td>
+    <td class="px-3 align-middle">1-10</td>
+    <td class="px-3 align-middle">Your account api key.</td>
+  </tr>	<tr>
+    <td class="px-3 align-middle" style="white-space: nowrap;">search<span class="text-danger"> *</span></td>
+    <td class="px-3 align-middle">string</td>
+    <td class="px-3 align-middle"></td>
+    <td class="px-3 align-middle">Your device name (e.g- xiaomi redmi note 11)</td>
+  </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h5 class="mt-3 text-900" data-bs-toggle="collapse" href="#table-response-format-device" role="button" aria-expanded="false" aria-controls="table-response-device" onclick="toggleCollapse(this)">Response Example <i class="fa-solid fa-chevron-down text-900 h6"></i></h5>
+
+          <div class="scrollbar collapse" id="table-response-format-device" style="border: 1px solid rgba(var(--phoenix-300-rgb), var(--phoenix-border-opacity)); border-radius: 0.25rem; overflow: overlay">
+            <ul class="nav nav-underline scrollbar" role="tablist" style="flex-wrap: nowrap; overflow-x: auto; overflow-y: hidden; display: -webkit-box;">
+
+            </ul>
+
+            <div class="table-responsive ">
+              <div class="tab-content mt-2"><div class="mb-1 tab-pane fade active show" id="response-example-device" role="tabpanel">
+<div class="">
+<pre class="scrollbar line-numbers language-json" tabindex="0"><code class="language-json">{
+    "status": true,
+    "data": {
+        "deviceinfo": {
+            "name": "Xiaomi Redmi Note 11",
+            "brand": "Xiaomi",
+            "model": "Redmi Note 11",
+            "price": "19,499.00 Taka (approx)",
+            "category": "Smartphone",
+            "showroom": "Click Here"
+        },
+        "network": {
+            "networktype": "GSM \/ HSPA \/ LTE",
+            "network2g": "GSM 850 \/ 900 \/ 1800 \/ 1900 - SIM 1 & SIM 2",
+            "network3g": "HSDPA 850 \/ 900 \/ 1700(AWS) \/ 1900 \/ 2100",
+            "network4g": "LTE",
+            "speed": "HSPA, LTE-A",
+            "gprs": "Yes",
+            "edge": "Yes"
+        },
+        "launch": {
+            "launchannouncement": "2022, January",
+            "launchdate": "Available. Released 2022, February"
+        },
+        "body": {
+            "bodydimensions": "159.9 x 73.9 x 8.1 mm (6.30 x 2.91 x 0.32 in)",
+            "bodyweight": "179 g",
+            "networksim": "Dual SIM (Nano-SIM, Dual stand-by)"
+        },
+        "display": {
+            "displaytype": "AMOLED, 90Hz, 700 nits, 1000 nits (peak)",
+            "displaysize": "6.43 inches, 99.8 cm2 (~84.5% screen-to-body ratio)",
+            "displayresolution": "1080 x 2400 pixels, 20:9 ratio",
+            "displaymultitouch": "Yes",
+            "displaydensity": "409 ppi",
+            "displayscreenprotection": "Corning Gorilla Glass 3"
+        },
+        "platform": {
+            "operatingsystem": "Android",
+            "osversion": "11",
+            "userinterface(ui)": "MIUI 13",
+            "chipset": "Qualcomm SM6225 Snapdragon 680 4G (6 nm)",
+            "cpu": "Octa-core (4x2.4 GHz Kryo 265 Gold & 4x1.9 GHz Kryo 265 Silver)",
+            "gpu": "Adreno 610"
+        },
+        "memory": {
+            "memoryinternal": "64 GB, 128 GB",
+            "memoryexternal": "microSDXC (dedicated slot)",
+            "ram": "4 GB, 6 GB"
+        },
+        "camera": {
+            "primarycamera": "Quad: 50 MP, (wide)\n8 MP, (ultrawide)\n2 MP, (macro)\n2 MP, (depth)",
+            "secondarycamera": "13 MP",
+            "camerafeatures": "LED Flash, Panorama, HDR",
+            "video": "1080p@30fps"
+        },
+        "sound": {
+            "audio": "Yes",
+            "loudspeaker": "Yes with Stereo Speakers",
+            "3.5mmjack": "Yes"
+        },
+        "connectivity": {
+            "wifi": "Wi-Fi 802.11 a\/b\/g\/n\/ac, dual-band, Wi-Fi Direct, Hotspot",
+            "bluetooth": "5.0, A2DP, LE",
+            "nfc": "Yes (Region Dependent)",
+            "infrared": "Yes",
+            "usb": "USB Type-C 2.0, USB On-The-Go",
+            "gps": "Yes, with A-GPS",
+            "fmradio": "No"
+        },
+        "features": {
+            "sensors": "Fingerprint (side-mounted), accelerometer, gyro, proximity, compass",
+            "messaging": "Yes"
+        },
+        "battery": {
+            "batterytype": "Non-removable Li-Po Battery",
+            "batterycapacity": "5000 mAh",
+            "charging": "Fast Charging 33W, 100% in 60 min (advertised)"
+        },
+        "more": {
+            "bodycolor": "Graphite Gray, Pearl White, Star Blue"
+        }
+    },
+    "image": "https:\/\/www.gsmarena.com.bd\/images\/products\/Xiaomi-Redmi-Note-111.jpg"
+}</code></pre>
+</div>
+</div></div>
+            </div>
+          </div>
+
+          <button class="btn btn-sm btn-phoenix-primary mt-3 try-it-out" data-api="device" data-method-color="<span class=&quot;token selector&quot;>GET</span>" data-method="get" data-endpoint="api/tools/device" data-decrease-request="1">Try it out</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><div class="col-12 col-md-6 col-xl-4 mb-3">
+  <div class="card shadow-none border border-300 px-1 mx-0">
+    <div class="card-header py-3 position-relative d-flex flex-column justify-content-between">
+      <div class="row g-3" style="flex-direction: column">
+        <div class="col-12 col-md">
+          <h5 class="text-900 mb-0" id="api/tools/imei">
+            <span class="token selector">GET</span> api/tools/imei&nbsp;&nbsp;
+            <span class="h6 text-900">(<span class="text-warning">0</span> request)</span>
+          </h5>
+          <p class="text-700 mb-0 mt-2">Get device information from imei number.</p>
+          <div class="language-url py-1 mt-1 mb-0 scrollbar user-select-all">
+            <code class="language-url">https://anbusec.xyz/api/tools/imei?apikey=YOUR_API_KEY_HERE&imei=YOUR_IMEI_NO</code>
+          </div>
+        </div>
+        <div class="col mt-0">
+          <nav class="nav nav-underline justify-content-end doc-tab-nav align-items-center">
+            <button class="btn btn-link px-2 text-900 copy-code-btn" type="button" data-clipboard-text="https://anbusec.xyz/api/tools/imei?apikey=YOUR_API_KEY_HERE&imei=YOUR_IMEI_NO" data-clipboard-toast="true">
+              <span class="fas fa-copy me-1" aria-hidden="true"></span>Copy Url
+            </button>
+            <a class="btn btn-sm btn-phoenix-primary ms-2 collapsed" data-bs-toggle="collapse" href="#imei" role="button" aria-expanded="true" aria-controls="imei">
+              <span class="fas fa-code me-1" aria-hidden="true"></span>Example
+            </a>
+          </nav>
+        </div>
+      </div>
+
+      <div class="row g-3">
+        <div class="card-body p-0">
+          <div class="code-collapse collapse" id="imei">
+            <ul class="nav nav-underline" role="tablist">
+              <li class="nav-item" role="presentation">
+                <a class="nav-link active" data-bs-toggle="tab" href="#node.jsimei" role="tab" aria-selected="false" tabindex="-1">Node.js</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#pythonimei" role="tab" aria-selected="false" tabindex="-1">Python</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#phpimei" role="tab" aria-selected="false" tabindex="-1">PHP</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#curlimei" role="tab" aria-selected="false" tabindex="-1">cURL</a>
+              </li>
+            </ul>
+
+            <div class="tab-content mt-3">
+              <div class="tab-pane fade active show" id="node.jsimei" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-javascript" tabindex="0"><code class="language-javascript">const axios = require('axios');
+(async () => {
+  try {
+    const response = await axios({
+      url: 'https://anbusec.xyz/api/tools/imei',
+      method: 'GET',
+      params: {
+        'apikey': 'YOUR_API_KEY_HERE',
+        'imei': 'YOUR_IMEI_NO',
+      }
+    });
+    console.log(response.data);
+  }
+  catch (error) {
+    console.log(error);
+  }
+})();
+</code></pre>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="pythonimei" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-python" tabindex="0"><code class="language-python">import requests
+
+url = 'https://anbusec.xyz/api/tools/imei'
+querystring = {
+    'apikey': 'YOUR_API_KEY_HERE',
+    'imei': 'YOUR_IMEI_NO',
+}
+response = requests.request('GET', url, headers=headers, params=querystring)
+print(response.text)
+</code></pre>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="phpimei" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-php" tabindex="0"><code class="language-php">$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, 'https://anbusec.xyz/api/tools/imei');
+$params['apikey'] = 'YOUR_API_KEY_HERE';
+$params['imei'] = 'YOUR_IMEI_NO';
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($params));
+$result = curl_exec($ch);
+curl_close($ch);
+echo $result;
+</code></pre>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="curlimei" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-curl" tabindex="0"><code class="language-curl">#!/bin/bash
+
+curl -X GET "https://anbusec.xyz/api/tools/imei?apikey=YOUR_API_KEY_HERE&imei=YOUR_IMEI_NO"</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+          <h5 class="mt-2 text-900" data-bs-toggle="collapse" href="#table-request-params-imei" role="button" aria-expanded="false" aria-controls="table-request-imei" onclick="toggleCollapse(this)">Request parameters <i class="fa-solid fa-chevron-down text-900 h6"></i> </h5>
+
+          <div class="table-responsive collapse mt-2 scrollbar" id="table-request-params-imei">
+            <table class="table table-sm border-200 fs--1 mb-0 scrollbar" style="min-width: 476px;">
+              <thead>
+                <tr>
+                  <th class="px-3 align-middle">Name</th>
+                  <th class="px-3 align-middle">Type</th>
+                  <th class="px-3 align-middle">Range</th>
+                  <th class="px-3 align-middle">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr>
+    <td class="px-3 align-middle" style="white-space: nowrap;">apikey<span class="text-danger"> *</span></td>
+    <td class="px-3 align-middle">string</td>
+    <td class="px-3 align-middle">1-10</td>
+    <td class="px-3 align-middle">Your account apikey.</td>
+  </tr>	<tr>
+    <td class="px-3 align-middle" style="white-space: nowrap;">imei<span class="text-danger"> *</span></td>
+    <td class="px-3 align-middle">string</td>
+    <td class="px-3 align-middle"></td>
+    <td class="px-3 align-middle">Your device imei number.</td>
+  </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h5 class="mt-3 text-900" data-bs-toggle="collapse" href="#table-response-format-imei" role="button" aria-expanded="false" aria-controls="table-response-imei" onclick="toggleCollapse(this)">Response Example <i class="fa-solid fa-chevron-down text-900 h6"></i></h5>
+
+          <div class="scrollbar collapse" id="table-response-format-imei" style="border: 1px solid rgba(var(--phoenix-300-rgb), var(--phoenix-border-opacity)); border-radius: 0.25rem; overflow: overlay">
+            <ul class="nav nav-underline scrollbar" role="tablist" style="flex-wrap: nowrap; overflow-x: auto; overflow-y: hidden; display: -webkit-box;">
+
+            </ul>
+
+            <div class="table-responsive ">
+              <div class="tab-content mt-2"><div class="mb-1 tab-pane fade active show" id="response-example-imei" role="tabpanel">
+<div class="">
+<pre class="scrollbar line-numbers language-json" tabindex="0"><code class="language-json">{
+    "status": true,
+    "valid": true,
+    "imei": "8636******88674",
+    "device": "Xiaomi 13T",
+    "brand": "Xiaomi Communications Co Ltd",
+    "model_nb": "230****60G"
+}</code></pre>
+</div>
+</div></div>
+            </div>
+          </div>
+
+          <button class="btn btn-sm btn-phoenix-primary mt-3 try-it-out" data-api="imei" data-method-color="<span class=&quot;token selector&quot;>GET</span>" data-method="get" data-endpoint="api/tools/imei" data-decrease-request="1">Try it out</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><div class="col-12 col-md-6 col-xl-4 mb-3">
+  <div class="card shadow-none border border-300 px-1 mx-0">
+    <div class="card-header py-3 position-relative d-flex flex-column justify-content-between">
+      <div class="row g-3" style="flex-direction: column">
+        <div class="col-12 col-md">
+          <h5 class="text-900 mb-0" id="api/tools/sms">
+            <span class="token selector">GET</span> api/tools/sms&nbsp;&nbsp;
+            <span class="h6 text-900">(<span class="text-warning">-1</span> request)</span>
+          </h5>
+          <p class="text-700 mb-0 mt-2">Anonymous sms sender</p>
+          <div class="language-url py-1 mt-1 mb-0 scrollbar user-select-all">
+            <code class="language-url">https://anbusec.xyz/api/tools/sms?apikey=YOUR_API_KEY_HERE&number=PHONE_NUMBER&message=YOUR_MESSAGE</code>
+          </div>
+        </div>
+        <div class="col mt-0">
+          <nav class="nav nav-underline justify-content-end doc-tab-nav align-items-center">
+            <button class="btn btn-link px-2 text-900 copy-code-btn" type="button" data-clipboard-text="https://anbusec.xyz/api/tools/sms?apikey=YOUR_API_KEY_HERE&number=PHONE_NUMBER&message=YOUR_MESSAGE" data-clipboard-toast="true">
+              <span class="fas fa-copy me-1" aria-hidden="true"></span>Copy Url
+            </button>
+            <a class="btn btn-sm btn-phoenix-primary ms-2 collapsed" data-bs-toggle="collapse" href="#sms" role="button" aria-expanded="true" aria-controls="sms">
+              <span class="fas fa-code me-1" aria-hidden="true"></span>Example
+            </a>
+          </nav>
+        </div>
+      </div>
+
+      <div class="row g-3">
+        <div class="card-body p-0">
+          <div class="code-collapse collapse" id="sms">
+            <ul class="nav nav-underline" role="tablist">
+              <li class="nav-item" role="presentation">
+                <a class="nav-link active" data-bs-toggle="tab" href="#node.jssms" role="tab" aria-selected="false" tabindex="-1">Node.js</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#pythonsms" role="tab" aria-selected="false" tabindex="-1">Python</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#phpsms" role="tab" aria-selected="false" tabindex="-1">PHP</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#curlsms" role="tab" aria-selected="false" tabindex="-1">cURL</a>
+              </li>
+            </ul>
+
+            <div class="tab-content mt-3">
+              <div class="tab-pane fade active show" id="node.jssms" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-javascript" tabindex="0"><code class="language-javascript">const axios = require('axios');
+(async () => {
+  try {
+    const response = await axios({
+      url: 'https://anbusec.xyz/api/tools/sms',
+      method: 'GET',
+      params: {
+        'apikey': 'YOUR_API_KEY_HERE',
+        'number': 'PHONE_NUMBER',
+        'message': 'YOUR_MESSAGE',
+      }
+    });
+    console.log(response.data);
+  }
+  catch (error) {
+    console.log(error);
+  }
+})();
+</code></pre>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="pythonsms" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-python" tabindex="0"><code class="language-python">import requests
+
+url = 'https://anbusec.xyz/api/tools/sms'
+querystring = {
+    'apikey': 'YOUR_API_KEY_HERE',
+    'number': 'PHONE_NUMBER',
+    'message': 'YOUR_MESSAGE',
+}
+response = requests.request('GET', url, headers=headers, params=querystring)
+print(response.text)
+</code></pre>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="phpsms" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-php" tabindex="0"><code class="language-php">$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, 'https://anbusec.xyz/api/tools/sms');
+$params['apikey'] = 'YOUR_API_KEY_HERE';
+$params['number'] = 'PHONE_NUMBER';
+$params['message'] = 'YOUR_MESSAGE';
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($params));
+$result = curl_exec($ch);
+curl_close($ch);
+echo $result;
+</code></pre>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="curlsms" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-curl" tabindex="0"><code class="language-curl">#!/bin/bash
+
+curl -X GET "https://anbusec.xyz/api/tools/sms?apikey=YOUR_API_KEY_HERE&number=PHONE_NUMBER&message=YOUR_MESSAGE"</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+          <h5 class="mt-2 text-900" data-bs-toggle="collapse" href="#table-request-params-sms" role="button" aria-expanded="false" aria-controls="table-request-sms" onclick="toggleCollapse(this)">Request parameters <i class="fa-solid fa-chevron-down text-900 h6"></i> </h5>
+
+          <div class="table-responsive collapse mt-2 scrollbar" id="table-request-params-sms">
+            <table class="table table-sm border-200 fs--1 mb-0 scrollbar" style="min-width: 476px;">
+              <thead>
+                <tr>
+                  <th class="px-3 align-middle">Name</th>
+                  <th class="px-3 align-middle">Type</th>
+                  <th class="px-3 align-middle">Range</th>
+                  <th class="px-3 align-middle">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr>
+    <td class="px-3 align-middle" style="white-space: nowrap;">apikey<span class="text-danger"> *</span></td>
+    <td class="px-3 align-middle">string</td>
+    <td class="px-3 align-middle">1-10</td>
+    <td class="px-3 align-middle">Your account apikey.</td>
+  </tr>	<tr>
+    <td class="px-3 align-middle" style="white-space: nowrap;">number<span class="text-danger"> *</span></td>
+    <td class="px-3 align-middle">string</td>
+    <td class="px-3 align-middle">1-11</td>
+    <td class="px-3 align-middle">Mobile number</td>
+  </tr>	<tr>
+    <td class="px-3 align-middle" style="white-space: nowrap;">message<span class="text-danger"> *</span></td>
+    <td class="px-3 align-middle">string</td>
+    <td class="px-3 align-middle"></td>
+    <td class="px-3 align-middle">Your message text</td>
+  </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h5 class="mt-3 text-900" data-bs-toggle="collapse" href="#table-response-format-sms" role="button" aria-expanded="false" aria-controls="table-response-sms" onclick="toggleCollapse(this)">Response Example <i class="fa-solid fa-chevron-down text-900 h6"></i></h5>
+
+          <div class="scrollbar collapse" id="table-response-format-sms" style="border: 1px solid rgba(var(--phoenix-300-rgb), var(--phoenix-border-opacity)); border-radius: 0.25rem; overflow: overlay">
+            <ul class="nav nav-underline scrollbar" role="tablist" style="flex-wrap: nowrap; overflow-x: auto; overflow-y: hidden; display: -webkit-box;">
+
+            </ul>
+
+            <div class="table-responsive ">
+              <div class="tab-content mt-2"><div class="mb-1 tab-pane fade active show" id="response-example-sms" role="tabpanel">
+<div class="">
+<pre class="scrollbar line-numbers language-json" tabindex="0"><code class="language-json">{
+    "status": true,
+    "message": "Sms send successful",
+    "number": "NUMBER",
+    "author": "https:\/\/facebook.com\/anbuinfosec"
+}</code></pre>
+</div>
+</div></div>
+            </div>
+          </div>
+
+          <button class="btn btn-sm btn-phoenix-primary mt-3 try-it-out" data-api="sms" data-method-color="<span class=&quot;token selector&quot;>GET</span>" data-method="get" data-endpoint="api/tools/sms" data-decrease-request="1">Try it out</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></div><div class="row g-3 justify-content-start mt-1 align-items-stretch"><h2 class="mb-4 text-900" id="v1" data-anchor="data-anchor">v1 <a href="#v1" class="anchorjs-link" aria-label="Anchor" data-anchorjs-icon="#"></a></h2><div class="col-12 col-md-6 col-xl-4 mb-3">
+  <div class="card shadow-none border border-300 px-1 mx-0">
+    <div class="card-header py-3 position-relative d-flex flex-column justify-content-between">
+      <div class="row g-3" style="flex-direction: column">
+        <div class="col-12 col-md">
+          <h5 class="text-900 mb-0" id="api/v1/simitalk">
+            <span class="token selector">GET</span> api/v1/simitalk&nbsp;&nbsp;
+            <span class="h6 text-900">(<span class="text-warning">0</span> request)</span>
+          </h5>
+          <p class="text-700 mb-0 mt-2">Chat with simsimi.</p>
+          <div class="language-url py-1 mt-1 mb-0 scrollbar user-select-all">
+            <code class="language-url">https://anbusec.xyz/api/v1/simitalk?apikey=YOUR_API_KEY_HERE&ask=YOUR_TEXT&lc=LANGUAGE_CODE</code>
+          </div>
+        </div>
+        <div class="col mt-0">
+          <nav class="nav nav-underline justify-content-end doc-tab-nav align-items-center">
+            <button class="btn btn-link px-2 text-900 copy-code-btn" type="button" data-clipboard-text="https://anbusec.xyz/api/v1/simitalk?apikey=YOUR_API_KEY_HERE&ask=YOUR_TEXT&lc=LANGUAGE_CODE" data-clipboard-toast="true">
+              <span class="fas fa-copy me-1" aria-hidden="true"></span>Copy Url
+            </button>
+            <a class="btn btn-sm btn-phoenix-primary ms-2 collapsed" data-bs-toggle="collapse" href="#simitalk" role="button" aria-expanded="true" aria-controls="simitalk">
+              <span class="fas fa-code me-1" aria-hidden="true"></span>Example
+            </a>
+          </nav>
+        </div>
+      </div>
+
+      <div class="row g-3">
+        <div class="card-body p-0">
+          <div class="code-collapse collapse" id="simitalk">
+            <ul class="nav nav-underline" role="tablist">
+              <li class="nav-item" role="presentation">
+                <a class="nav-link active" data-bs-toggle="tab" href="#node.jssimitalk" role="tab" aria-selected="false" tabindex="-1">Node.js</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#pythonsimitalk" role="tab" aria-selected="false" tabindex="-1">Python</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#phpsimitalk" role="tab" aria-selected="false" tabindex="-1">PHP</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#curlsimitalk" role="tab" aria-selected="false" tabindex="-1">cURL</a>
+              </li>
+            </ul>
+
+            <div class="tab-content mt-3">
+              <div class="tab-pane fade active show" id="node.jssimitalk" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-javascript" tabindex="0"><code class="language-javascript">const axios = require('axios');
+(async () => {
+  try {
+    const response = await axios({
+      url: 'https://anbusec.xyz/api/v1/simitalk',
+      method: 'GET',
+      params: {
+        'apikey': 'YOUR_API_KEY_HERE',
+        'ask': 'YOUR_TEXT',
+        'lc': 'LANGUAGE_CODE',
+      }
+    });
+    console.log(response.data);
+  }
+  catch (error) {
+    console.log(error);
+  }
+})();
+</code></pre>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="pythonsimitalk" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-python" tabindex="0"><code class="language-python">import requests
+
+url = 'https://anbusec.xyz/api/v1/simitalk'
+querystring = {
+    'apikey': 'YOUR_API_KEY_HERE',
+    'ask': 'YOUR_TEXT',
+    'lc': 'LANGUAGE_CODE',
+}
+response = requests.request('GET', url, headers=headers, params=querystring)
+print(response.text)
+</code></pre>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="phpsimitalk" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-php" tabindex="0"><code class="language-php">$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, 'https://anbusec.xyz/api/v1/simitalk');
+$params['apikey'] = 'YOUR_API_KEY_HERE';
+$params['ask'] = 'YOUR_TEXT';
+$params['lc'] = 'LANGUAGE_CODE';
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($params));
+$result = curl_exec($ch);
+curl_close($ch);
+echo $result;
+</code></pre>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="curlsimitalk" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-curl" tabindex="0"><code class="language-curl">#!/bin/bash
+
+curl -X GET "https://anbusec.xyz/api/v1/simitalk?apikey=YOUR_API_KEY_HERE&ask=YOUR_TEXT&lc=LANGUAGE_CODE"</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+          <h5 class="mt-2 text-900" data-bs-toggle="collapse" href="#table-request-params-simitalk" role="button" aria-expanded="false" aria-controls="table-request-simitalk" onclick="toggleCollapse(this)">Request parameters <i class="fa-solid fa-chevron-down text-900 h6"></i> </h5>
+
+          <div class="table-responsive collapse mt-2 scrollbar" id="table-request-params-simitalk">
+            <table class="table table-sm border-200 fs--1 mb-0 scrollbar" style="min-width: 476px;">
+              <thead>
+                <tr>
+                  <th class="px-3 align-middle">Name</th>
+                  <th class="px-3 align-middle">Type</th>
+                  <th class="px-3 align-middle">Range</th>
+                  <th class="px-3 align-middle">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr>
+    <td class="px-3 align-middle" style="white-space: nowrap;">apikey<span class="text-danger"> *</span></td>
+    <td class="px-3 align-middle">string</td>
+    <td class="px-3 align-middle">1-10</td>
+    <td class="px-3 align-middle">Your account apikey.</td>
+  </tr>	<tr>
+    <td class="px-3 align-middle" style="white-space: nowrap;">ask<span class="text-danger"> *</span></td>
+    <td class="px-3 align-middle">string</td>
+    <td class="px-3 align-middle"></td>
+    <td class="px-3 align-middle">Your question.</td>
+  </tr>	<tr>
+    <td class="px-3 align-middle" style="white-space: nowrap;">lc<span class="text-danger"> *</span></td>
+    <td class="px-3 align-middle">string</td>
+    <td class="px-3 align-middle">0-2</td>
+    <td class="px-3 align-middle">Your 2 digit language code.</td>
+  </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h5 class="mt-3 text-900" data-bs-toggle="collapse" href="#table-response-format-simitalk" role="button" aria-expanded="false" aria-controls="table-response-simitalk" onclick="toggleCollapse(this)">Response Example <i class="fa-solid fa-chevron-down text-900 h6"></i></h5>
+
+          <div class="scrollbar collapse" id="table-response-format-simitalk" style="border: 1px solid rgba(var(--phoenix-300-rgb), var(--phoenix-border-opacity)); border-radius: 0.25rem; overflow: overlay">
+            <ul class="nav nav-underline scrollbar" role="tablist" style="flex-wrap: nowrap; overflow-x: auto; overflow-y: hidden; display: -webkit-box;">
+
+            </ul>
+
+            <div class="table-responsive ">
+              <div class="tab-content mt-2"><div class="mb-1 tab-pane fade active show" id="response-example-simitalk" role="tabpanel">
+<div class="">
+<pre class="scrollbar line-numbers language-json" tabindex="0"><code class="language-json">{
+    "status": true,
+    "message": "hello dear"
+}</code></pre>
+</div>
+</div></div>
+            </div>
+          </div>
+
+          <button class="btn btn-sm btn-phoenix-primary mt-3 try-it-out" data-api="simitalk" data-method-color="<span class=&quot;token selector&quot;>GET</span>" data-method="get" data-endpoint="api/v1/simitalk" data-decrease-request="1">Try it out</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><div class="col-12 col-md-6 col-xl-4 mb-3">
+  <div class="card shadow-none border border-300 px-1 mx-0">
+    <div class="card-header py-3 position-relative d-flex flex-column justify-content-between">
+      <div class="row g-3" style="flex-direction: column">
+        <div class="col-12 col-md">
+          <h5 class="text-900 mb-0" id="api/v1/simiteach">
+            <span class="token selector">GET</span> api/v1/simiteach&nbsp;&nbsp;
+            <span class="h6 text-900">(<span class="text-warning">0</span> request)</span>
+          </h5>
+          <p class="text-700 mb-0 mt-2">Teach anything to simsimi.</p>
+          <div class="language-url py-1 mt-1 mb-0 scrollbar user-select-all">
+            <code class="language-url">https://anbusec.xyz/api/v1/simiteach?apikey=YOUR_API_KEY_HERE&ask=YOUR_TEXT&ans=ANS&lc=LANGUAGE_CODE</code>
+          </div>
+        </div>
+        <div class="col mt-0">
+          <nav class="nav nav-underline justify-content-end doc-tab-nav align-items-center">
+            <button class="btn btn-link px-2 text-900 copy-code-btn" type="button" data-clipboard-text="https://anbusec.xyz/api/v1/simiteach?apikey=YOUR_API_KEY_HERE&ask=YOUR_TEXT&ans=ANS&lc=LANGUAGE_CODE" data-clipboard-toast="true">
+              <span class="fas fa-copy me-1" aria-hidden="true"></span>Copy Url
+            </button>
+            <a class="btn btn-sm btn-phoenix-primary ms-2 collapsed" data-bs-toggle="collapse" href="#simiteach" role="button" aria-expanded="true" aria-controls="simiteach">
+              <span class="fas fa-code me-1" aria-hidden="true"></span>Example
+            </a>
+          </nav>
+        </div>
+      </div>
+
+      <div class="row g-3">
+        <div class="card-body p-0">
+          <div class="code-collapse collapse" id="simiteach">
+            <ul class="nav nav-underline" role="tablist">
+              <li class="nav-item" role="presentation">
+                <a class="nav-link active" data-bs-toggle="tab" href="#node.jssimiteach" role="tab" aria-selected="false" tabindex="-1">Node.js</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#pythonsimiteach" role="tab" aria-selected="false" tabindex="-1">Python</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#phpsimiteach" role="tab" aria-selected="false" tabindex="-1">PHP</a>
+              </li>
+              <li class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-toggle="tab" href="#curlsimiteach" role="tab" aria-selected="false" tabindex="-1">cURL</a>
+              </li>
+            </ul>
+
+            <div class="tab-content mt-3">
+              <div class="tab-pane fade active show" id="node.jssimiteach" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-javascript" tabindex="0"><code class="language-javascript">const axios = require('axios');
+(async () => {
+  try {
+    const response = await axios({
+      url: 'https://anbusec.xyz/api/v1/simiteach',
+      method: 'GET',
+      params: {
+        'apikey': 'YOUR_API_KEY_HERE',
+        'ask': 'YOUR_TEXT',
+        'ans': 'ANS',
+        'lc': 'LANGUAGE_CODE',
+      }
+    });
+    console.log(response.data);
+  }
+  catch (error) {
+    console.log(error);
+  }
+})();
+</code></pre>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="pythonsimiteach" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-python" tabindex="0"><code class="language-python">import requests
+
+url = 'https://anbusec.xyz/api/v1/simiteach'
+querystring = {
+    'apikey': 'YOUR_API_KEY_HERE',
+    'ask': 'YOUR_TEXT',
+    'ans': 'ANS',
+    'lc': 'LANGUAGE_CODE',
+}
+response = requests.request('GET', url, headers=headers, params=querystring)
+print(response.text)
+</code></pre>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="phpsimiteach" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-php" tabindex="0"><code class="language-php">$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, 'https://anbusec.xyz/api/v1/simiteach');
+$params['apikey'] = 'YOUR_API_KEY_HERE';
+$params['ask'] = 'YOUR_TEXT';
+$params['ans'] = 'ANS';
+$params['lc'] = 'LANGUAGE_CODE';
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($params));
+$result = curl_exec($ch);
+curl_close($ch);
+echo $result;
+</code></pre>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="curlsimiteach" role="tabpanel">
+                <div class="">
+                  <pre class="scrollbar line-numbers language-curl" tabindex="0"><code class="language-curl">#!/bin/bash
+
+curl -X GET "https://anbusec.xyz/api/v1/simiteach?apikey=YOUR_API_KEY_HERE&ask=YOUR_TEXT&ans=ANS&lc=LANGUAGE_CODE"</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+          <h5 class="mt-2 text-900" data-bs-toggle="collapse" href="#table-request-params-simiteach" role="button" aria-expanded="false" aria-controls="table-request-simiteach" onclick="toggleCollapse(this)">Request parameters <i class="fa-solid fa-chevron-down text-900 h6"></i> </h5>
+
+          <div class="table-responsive collapse mt-2 scrollbar" id="table-request-params-simiteach">
+            <table class="table table-sm border-200 fs--1 mb-0 scrollbar" style="min-width: 476px;">
+              <thead>
+                <tr>
+                  <th class="px-3 align-middle">Name</th>
+                  <th class="px-3 align-middle">Type</th>
+                  <th class="px-3 align-middle">Range</th>
+                  <th class="px-3 align-middle">Description</th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr>
+    <td class="px-3 align-middle" style="white-space: nowrap;">apikey<span class="text-danger"> *</span></td>
+    <td class="px-3 align-middle">string</td>
+    <td class="px-3 align-middle">1-10</td>
+    <td class="px-3 align-middle">Your account apikey.</td>
+  </tr>	<tr>
+    <td class="px-3 align-middle" style="white-space: nowrap;">ask<span class="text-danger"> *</span></td>
+    <td class="px-3 align-middle">string</td>
+    <td class="px-3 align-middle"></td>
+    <td class="px-3 align-middle">Your teach question.</td>
+  </tr>	<tr>
+    <td class="px-3 align-middle" style="white-space: nowrap;">ans<span class="text-danger"> *</span></td>
+    <td class="px-3 align-middle">string</td>
+    <td class="px-3 align-middle"></td>
+    <td class="px-3 align-middle">Your teach answer.</td>
+  </tr>	<tr>
+    <td class="px-3 align-middle" style="white-space: nowrap;">lc<span class="text-danger"> *</span></td>
+    <td class="px-3 align-middle">string</td>
+    <td class="px-3 align-middle">0-2</td>
+    <td class="px-3 align-middle">Your 2 digit language code.</td>
+  </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h5 class="mt-3 text-900" data-bs-toggle="collapse" href="#table-response-format-simiteach" role="button" aria-expanded="false" aria-controls="table-response-simiteach" onclick="toggleCollapse(this)">Response Example <i class="fa-solid fa-chevron-down text-900 h6"></i></h5>
+
+          <div class="scrollbar collapse" id="table-response-format-simiteach" style="border: 1px solid rgba(var(--phoenix-300-rgb), var(--phoenix-border-opacity)); border-radius: 0.25rem; overflow: overlay">
+            <ul class="nav nav-underline scrollbar" role="tablist" style="flex-wrap: nowrap; overflow-x: auto; overflow-y: hidden; display: -webkit-box;">
+
+            </ul>
+
+            <div class="table-responsive ">
+              <div class="tab-content mt-2"><div class="mb-1 tab-pane fade active show" id="response-example-simiteach" role="tabpanel">
+<div class="">
+<pre class="scrollbar line-numbers language-json" tabindex="0"><code class="language-json">{
+    "status": true,
+    "message": "SimSimi just learned 1th answer to the question \"who is anbuinfosec?\""
+}</code></pre>
+</div>
+</div></div>
+            </div>
+          </div>
+
+          <button class="btn btn-sm btn-phoenix-primary mt-3 try-it-out" data-api="simiteach" data-method-color="<span class=&quot;token selector&quot;>GET</span>" data-method="get" data-endpoint="api/v1/simiteach" data-decrease-request="1">Try it out</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></div>
+
+      <input type="hidden" id="apikey" value="">
+      <script src="public/js/docs.js"></script>
+      <script>
+        Prism.highlightAll();
+      </script>
+      <script>
+        function scrollToElement(id) {
+          var element = document.getElementById(id);
+          if (element) {
+            element.scrollIntoView({
+              behavior: 'smooth'
+            });
+            $("#searchModal").modal("hide");
+            element.classList.add('highlighted');
+            setTimeout(function() {
+              element.classList.remove('highlighted');
+            }, 5000);
+          }
+        }
+      </script>
+
+
+
+    </div>
+  </div>
+</main>
+<div id="fb-root"></div>
+    <div id="fb-customer-chat" class="fb-customerchat">
+    </div>
+
+    <script>
+      var chatbox = document.getElementById('fb-customer-chat');
+      chatbox.setAttribute("page_id", "110016624895285");
+      chatbox.setAttribute("attribution", "biz_inbox");
+    </script>
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          xfbml            : true,
+          version          : 'v18.0'
+        });
+      };
+
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
+    </body>
+<footer class="footer-distributed">
+    <div class="footer-right">
+        <a href="https://www.facebook.com/anbuinfosec"><i class="fa fa-facebook"></i></a>
+        <a href="https://github.com/anbuinfosec"><i class="fa fa-github"></i></a>
+        <a href="/cdn-cgi/l/email-protection#ef8e818d9a868189809c8a8caf88828e8683c18c8082"><i class="fa fa-envelope"></i></a>
+        <a href="https://t.me/anbudevs"><i class="fa fa-telegram"></i></a>
+    </div>
+    <div class="footer-left">
+        <p class="footer-links">
+            <a href="index">Home</a>
+            ·
+            <a href="docs">Documentation</a>
+            ·
+            <a href="tools">Tools</a>
+            ·
+            <a href="price">Pricing</a>
+            ·
+            <a href="about">About</a>
+            ·
+            <a href="donation">Donation</a>
+        </p>
+        <p class="mb-1">anbuinfosec · 2023</p>
+            </div>
+
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></html>

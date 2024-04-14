@@ -1,0 +1,306 @@
+
+<!DOCTYPE html>
+<html lang="en" class="scrollbar dark">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Anbuinfosec Apis | anbuinfosec</title>
+    <base href="/">
+    <meta property="og:title" content="anbuinfosec apis | anbuinfosec">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="public/images/logo512.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Anbuinfosec Apis is a website that provides APIs for developers.">
+    <link rel="icon" href="public/images/logo512.png" type="image/x-icon">
+    <link rel="stylesheet" id="prims-css" href="public/css/prism.css">
+    <link rel="stylesheet" href="public/css/phoenix.css">
+    <link rel="stylesheet" href="public/css/custom.css">
+    <link rel="stylesheet" href="public/css/footer.css">
+    <link rel="stylesheet" href="ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <script src="public/js/prism.js"></script>
+    <script src="public/js/9e0725c1aa.js"></script>
+    <script src="public/js/jquery-3.6.3.min.js"></script>
+    <script src="public/js/modal.js"></script>
+    <script src="public/js/toast.js"></script>
+    <script src="public/js/clipboard.js"></script>
+    <script src="/public/js/ajaxposts.js"></script>
+    <script src="npm/sweetalert2-11.js"></script>
+    <script src="npm/bootstrap-5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="ajax/libs/list_js/2.3.1/list.min.js"></script>
+</head>
+
+<body>
+    <div class="loader">
+        <div class="loader__figure">
+            <img src="public/images/loader.svg" alt="loader" style="max-width: 200px;">
+        </div>
+    </div><main class="main" id="top">
+    <div class="container-fluid px-0" data-layout="container">
+
+<nav class="navbar navbar-top navbar-expand-md" id="navbarTop">
+    <div class="navbar-logo">
+        <button class="btn navbar-toggler navbar-toggler-humburger-icon hover-bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTopCollapse" aria-controls="navbarTopCollapse" aria-expanded="false" aria-label="Toggle Navigation">
+            <span class="navbar-toggle-icon"><span class="toggle-line"></span></span>
+        </button>
+        <a class="navbar-brand mr-1 mr-sm-3" href="index">
+            <div class="d-flex align-items-center">
+                <img src="public/images/logo.png" class="d-inline-block align-top rounded" alt="logo" style="max-height: 40px !important;">
+                <span class="h4 mb-0 text-uppercase d-none d-sm-block ms-2" style="font-family: gang-of-three;">ANBUINFOSEC</span>
+            </div>
+        </a>
+    </div>
+    <div class="collapse navbar-collapse navbar-top-collapse order-1 order-md-0 justify-content-end" id="navbarTopCollapse">
+        <ul class="navbar-nav" data-top-nav-dropdowns="data-top-nav-dropdowns">
+            <li class="nav-item">
+                <a href="docs" class="nav-link px-3"><i class="fas fa-book"></i> Docs</a>
+            </li>
+            <li class="nav-item">
+                <a href="tools" class="nav-link px-3"><i class="fas fa-tools"></i> Tools</a>
+            </li>       
+            <li class="nav-item">
+                <a href="price" class="nav-link px-3"><i class="fas fa-money-bill-wave"></i> Price</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a href="contacts" class="nav-link px-3"><i class="fas fa-phone-alt"></i> Contacts</a>
+            </li>
+            <li class="nav-item">
+                <a href="about" class="nav-link px-3"><i class="fas fa-info-circle"></i> About</a>
+            </li>
+                            <li class="nav-item dropdown">
+                    <a href="signin" class="nav-link px-3"><i class="fas fa-sign-in-alt"></i> Login</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="signup" class="nav-link px-3"><i class="fas fa-user-plus"></i> Register</a>
+                </li>
+
+            <li class="nav-item" id="switch-theme">
+                <a class="nav-link px-3" id="switch-mode" role="button">
+                    <i class="fas fa-moon" id="switch-mode-icon"></i>
+                    <span class="d-md-none">Switch to <span id="switch-mode-text">dark</span> Mode</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <ul class="navbar-nav navbar-nav-icons flex-row">
+            </ul>
+</nav>        <nav class="navbar navbar-top navbar-expand-md" id="navbarTop" style="z-index:199;">
+    <div class="navbar-logo">
+        <button class="btn navbar-toggler navbar-toggler-humburger-icon hover-bg-transparent" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTopCollapse" aria-controls="navbarTopCollapse" aria-expanded="false" aria-label="Toggle Navigation">
+            <span class="navbar-toggle-icon"><span class="toggle-line"></span></span>
+        </button>
+        <a class="navbar-brand mr-1 mr-sm-3" href="index.php">
+            <div class="d-flex align-items-center">
+                <img src="public/images/logo.png" class="d-inline-block align-top rounded" alt="logo" style="max-height: 40px !important;">
+                <span class="h4 mb-0 text-uppercase d-none d-sm-block ms-2" style="font-family: Conthrax;">ANBUINFOSEC</span>
+            </div>
+        </a>
+    </div>
+    <div class="collapse navbar-collapse navbar-top-collapse order-1 order-md-0 justify-content-end" id="navbarTopCollapse">
+        <ul class="navbar-nav" data-top-nav-dropdowns="data-top-nav-dropdowns">
+            <li class="nav-item">
+                <a href="docs" class="nav-link px-3"><i class="fas fa-book" aria-hidden="true"></i> Docs</a>
+            </li>
+            <li class="nav-item">
+                <a href="price" class="nav-link px-3"><i class="fas fa-money-bill-wave" aria-hidden="true"></i> Price</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a href="contacts" class="nav-link px-3"><i class="fas fa-phone-alt" aria-hidden="true"></i> Contacts</a>
+            </li>
+            <li class="nav-item">
+                <a href="about" class="nav-link px-3"><i class="fas fa-info-circle" aria-hidden="true"></i> About</a>
+            </li>
+                            <li class="nav-item dropdown">
+                    <a href="signin" class="nav-link px-3"><i class="fas fa-sign-in-alt" aria-hidden="true"></i> Login</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="signup" class="nav-link px-3"><i class="fas fa-user-plus" aria-hidden="true"></i> Register</a>
+                </li>
+
+            <li class="nav-item" id="switch-theme">
+                <a class="nav-link px-3" id="switch-mode" role="button">
+                    <i class="fas fa-sun" id="switch-mode-icon" aria-hidden="true"></i>
+                    <span class="d-md-none">Switch to <span id="switch-mode-text">light</span> Mode</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <ul class="navbar-nav navbar-nav-icons flex-row">
+            </ul>
+</nav>        <script src="public/js/header.js"></script>
+
+        <section class="bg-white pb-8" id="home">
+            <div class="container-small hero-header-container px-lg-7 px-xxl-3">
+                <div class="row align-items-center justify-content-between">
+                    <div class="col-12 col-lg-auto order-0 order-md-1 text-end order-1">
+                        <div class="position-relative p-5 p-md-7 d-lg-none">
+                            <div class="bg-holder" style="background-image:url(./public/images/bg-23.png);background-size:contain;"></div>
+                            <!--/.bg-holder-->
+                            <div class="position-relative"><img class="w-100 shadow-lg d-dark-none rounded-2" src="./public/images/mf-light.png" alt="hero-header"><img class="w-100 shadow-lg d-light-none rounded-2" src="./public/images/mf-dark.png" alt="hero-header"></div>
+                        </div>
+                        <div class="hero-image-container position-absolute top-0 bottom-0 end-0 d-none d-lg-block">
+                            <div class="position-relative h-100 w-100">
+                                <div class="position-absolute h-100 top-0 d-flex align-items-center end-0 hero-image-container-bg"><img class="pt-7 pt-md-0 w-100" src="./public/images/bg-1-2.png" alt="hero-header"></div>
+                                <div class="position-absolute h-100 top-0 d-flex align-items-center end-0"><img class="pt-7 pt-md-0 w-100 shadow-lg d-dark-none rounded-2" src="./public/images/mf-light.png" alt="hero-header"><img class="pt-7 pt-md-0 w-100 shadow-lg d-light-none rounded-2" src="./public/images/mf-dark.png" alt="hero-header"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 text-lg-start text-center pt-8 pb-6 order-0 position-relative">
+                        <h1 class="fs-5 fs-lg-6 fs-md-7 fs-lg-6 fs-xl-7 fs fw-black mb-4"><span class="text-primary me-3">Coding</span>Dreams<br>into Reality</h1>
+                        <p class="mb-5">At Anbusec, we weave digital magic – from captivating websites and intelligent bots to powerful APIs. Our expertise transforms ideas into seamless, elegant solutions that redefine the digital landscape.</p><a class="btn btn-lg btn-primary rounded-pill me-3" href="https://tas33n.github.io/" role="button">Contact</a>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="pt-15 pb-0" id="feature">
+            <div class="container-small px-lg-7 px-xxl-3">
+                <div class="position-relative z-index-2">
+                    <div class="row">
+                        <div class="col-lg-6 text-center text-lg-start pe-xxl-3">
+                            <h4 class="text-primary fw-bolder mb-4">Features</h4>
+                            <h2 class="mb-3 text-black lh-base">Digital Alchemy:<br class="d-md-none">Crafting Tomorrow's Tech Today</h2>
+                            <p class="mb-5">Embark on a transformative journey with our comprehensive suite of cutting-edge services tailored to elevate your online presence!</p>
+                            <a class="btn btn-lg btn-outline-primary rounded-pill me-2" href="/docs" role="button">Explore Our Free Api Service<svg class="svg-inline--fa fa-angle-right ms-2" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512" data-fa-i2svg="">
+                                    <path fill="currentColor" d="M64 448c-8.188 0-16.38-3.125-22.62-9.375c-12.5-12.5-12.5-32.75 0-45.25L178.8 256L41.38 118.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0l160 160c12.5 12.5 12.5 32.75 0 45.25l-160 160C80.38 444.9 72.19 448 64 448z"></path>
+                                </svg></a>
+                        </div>
+                        <div class="col-sm-6 col-lg-3 mt-7 text-center text-lg-start">
+                            <div class="h-100 d-flex flex-column justify-content-between">
+                                <div class="border-start-lg border-dashed ps-4"><img class="mb-4" src="./public/images/bolt.png" width="48" height="48" alt="">
+                                    <div>
+                                        <h5 class="fw-bolder mb-2">Lightning Speed</h5>
+                                        <p class="fw-semi-bold lh-sm">Present everything you need in one place within minutes! Grow with Anbusec!</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-3 mt-7 text-center text-lg-start">
+                            <div class="h-100 d-flex flex-column">
+                                <div class="border-start-lg border-dashed ps-4"><img class="mb-4" src="./public/images/pie.png" width="48" height="48" alt="">
+                                    <div>
+                                        <h5 class="fw-bolder mb-2">All-in-one solution</h5>
+                                        <p class="fw-semi-bold lh-sm">Show your production and growth graph in one place with Anbusec!</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-12 align-items-center justify-content-between text-center text-lg-start mb-6 mb-lg-0">
+                        <div class="col-lg-5"><img class="feature-image img-fluid mb-9 mb-lg-0 d-dark-none" src="./public/images/web-dev.png" alt=""><img class="feature-image img-fluid mb-9 mb-lg-0 d-light-none" src="./public/images/web-dev.png" alt=""></div>
+                        <div class="col-lg-6">
+                            <h3 class="fw-bolder mb-3">Web Development</h3>
+                            <p class="mb-4 px-md-7 px-lg-0">Your online identity deserves the best. Our expert web development team creates not just websites, but digital experiences. From sleek designs to intuitive interfaces, we build platforms that leave a lasting impression.</p>
+                        </div>
+                    </div>
+                    <div class="row mt-2 align-items-center justify-content-between text-center text-lg-start mb-6 mb-lg-0">
+                        <div class="col-lg-5 order-0 order-lg-1"><img class="feature-image img-fluid mb-9 mb-lg-0 d-dark-none" src="./public/images/bot-dev.png" height="394" alt=""><img class="feature-image img-fluid mb-9 mb-lg-0 d-light-none" src="./public/images/bot-dev.png" height="394" alt=""></div>
+                        <div class="col-lg-6">
+                            <h3 class="fw-bolder mb-3">Bot Development</h3>
+                            <p class="mb-4 px-md-7 px-lg-0">Dive into the social realm with confidence. Our skilled team crafts engaging and dynamic Facebook, Messenger, and Telegram bots, transforming casual interactions into meaningful engagements that resonate with your audience.</p>
+                        </div>
+                    </div>
+                    <div class="row mt-2 align-items-center justify-content-between text-center text-lg-start mb-6 mb-lg-0">
+                        <div class="col-lg-5"><img class="feature-image img-fluid mb-9 mb-lg-0 d-dark-none" src="./public/images/api-dev.png" height="394" alt=""><img class="feature-image img-fluid mb-9 mb-lg-0 d-light-none" src="./public/images/api-dev.png" height="394" alt=""></div>
+                        <div class="col-lg-6 text-center text-lg-start">
+                            <h3 class="fw-bolder mb-3">API Building</h3>
+                            <p class="mb-4 px-md-7 px-lg-0">Empower your applications with our bespoke API solutions. We architect robust and scalable interfaces, fostering seamless communication between systems, ensuring flexibility and future-proofing your digital endeavors.</p>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- end of .container-->
+        </section>
+
+        <section class="bg-white pb-0">
+            <div class="container-small px-lg-7 px-xxl-3">
+                <div class="row justify-content-center">
+                    <div class="col-12 text-center">
+                        <div class="card py-md-9 px-md-13 border-0 z-index-1 shadow-lg cta-card" style="margin-bottom: -25%;">
+                            <div class="bg-holder" style="background-image:url(./public/images/bg-18.png);background-position:right;background-size:auto;"></div>
+                            <!--/.bg-holder-->
+                            <div class="card-body position-relative"><img class="img-fluid mb-5 d-dark-none" src="./public/images/27.png" width="210" alt="...">
+
+                                <img class="img-fluid mb-5 d-light-none" src="./public/images/dark_27.png" width="210" alt="...">
+                                <div class="d-flex align-items-center fw-bold justify-content-center mb-3">
+                                    <p class="mb-0">Discover a World of Possibilities with Our Free API Services at Anbusec! Join Today to Explore a Variety of Useful APIs, Expertly Crafted by Our Developers – Your Gateway to Limitless Solutions!</p>
+                                </div>
+                                <h1 class="fs-2 fs-sm-4 fs-lg-6 fw-bolder lh-sm mb-3">Join<span class="gradient-text-primary mx-2">Anbusec APIs</span><span>Today</span></h1>
+                                <a class="btn btn-lg btn-primary rounded-pill me-3" href="/signup.php" role="button">Sign up to use</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- end of .container-->
+        </section>
+
+        <div class="position-relative">
+            <div class="bg-holder footer-bg" style="background-image:url(./public/images/bg-19.png);background-size:auto;"></div>
+
+            <!--/.bg-holder-->
+            <div class="bg-holder" style="background-image:url(./public/images/bg-right-20.png);background-position:right;background-size:auto;"></div>
+            <!--/.bg-holder-->
+            <div class="bg-holder" style="background-image:url(./public/images/bg-left-20.png);background-position:left;background-size:auto;"></div>
+            <!--/.bg-holder-->
+            <div class="position-relative"><svg class="w-100 text-white" preserveAspectRatio="none" viewBox="0 0 1920 368" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1920 0.44L0 367.74V0H1920V0.44Z" fill="currentColor"></path>
+                </svg>
+
+
+            </div>
+        </div>
+</div></main>
+<br>
+<div id="fb-root"></div>
+    <div id="fb-customer-chat" class="fb-customerchat">
+    </div>
+
+    <script>
+      var chatbox = document.getElementById('fb-customer-chat');
+      chatbox.setAttribute("page_id", "110016624895285");
+      chatbox.setAttribute("attribution", "biz_inbox");
+    </script>
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          xfbml            : true,
+          version          : 'v18.0'
+        });
+      };
+
+      (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
+    </body>
+<footer class="footer-distributed">
+    <div class="footer-right">
+        <a href="https://www.facebook.com/anbuinfosec"><i class="fa fa-facebook"></i></a>
+        <a href="https://github.com/anbuinfosec"><i class="fa fa-github"></i></a>
+        <a href="/cdn-cgi/l/email-protection#8aebe4e8ffe3e4ece5f9efe9caede7ebe3e6a4e9e5e7"><i class="fa fa-envelope"></i></a>
+        <a href="https://t.me/anbudevs"><i class="fa fa-telegram"></i></a>
+    </div>
+    <div class="footer-left">
+        <p class="footer-links">
+            <a href="index">Home</a>
+            ·
+            <a href="docs">Documentation</a>
+            ·
+            <a href="tools">Tools</a>
+            ·
+            <a href="price">Pricing</a>
+            ·
+            <a href="about">About</a>
+            ·
+            <a href="donation">Donation</a>
+        </p>
+        <p class="mb-1">anbuinfosec · 2023</p>
+            </div>
+
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script></html>

@@ -1,0 +1,15 @@
+node_modules
+
+*.zip
+*.dev.*
+*.rar
+*test.*
+*.test.*
+test.js
+.replit
+replit.nix
+
+
+cache/*
+.upm/*
+.config/*
